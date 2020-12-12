@@ -1,7 +1,25 @@
 # Gestão
 
-Gestão de vida, gestão de carreira, gestão de conhecimento, gestão de projetos, gestão de atividades, ...
+## Antes de começar a ler
 
-Este é o repositório onde armazeno documentação: textos, relatos, diários, programas, com a finalidade de torná-los públicos, em algum momento.
+Gostaria de avisar que pretendo usar este repositório para trocar idéias com colaboradores. Quem as ler pode não concordar, considerá-las delírios, encontrar falhas nos argumentos e nas premissas. Falhas, discordância, questionamento, ... fazem parte do processo de desenvolvimento de idéias.
 
-Isto é necessário porque a minha maneira de pensar/trabalhar é beneficiada pela minha percepção de separação entre texto para publicar e texto para me ajudar a conservar informação. Eu poderia separar em diretórios no computador. Faço isso, mas à medida que vou elaborando material, com o tempo, acabo misturando textos bem estruturados, textos confusos (que nunca serão melhor trabalhados, mas contém informação que pode ser útil) e textos em elaboração. Minha esperança é que a perspectiva de tornar público o que eu depositar aqui seja suficiente para eu conseguir um recorte estável.
+## Motivação
+
+
+1. e se ... sistemas semânticos forem capazes de melhorar a qualidade dos documentos de comunicação, como planos, relatórios, artigos?
+2. e se ... sistemas semânticos, por serem baseados em conceitos simples aplicados homogeneamente, puderem condicionar o comportamento humano de maneira a beneficiá-los, por exemplo, deixando-os menos sujeitos a erros cognitivos e falácias lógicas??
+3. e se ... o estudo de sistemas semânticos for capaz de aumentar nossa precisão na comunicação entre indivíduos, permitindo que os comunicantes percebam (e evitem) erros cognitivos e falácias lógicas? Isto seria útil em processos educacionais, onde uma fonte de falha na transmissão de conhecimento são esses erros e falácias, criadas por erro do educador ( para simplificar o raciocínio, parte-se do princípio que o educador sabe o conteúdo que vai transmitir. Caso ele não saiba e precise recorrer a outras fontes, acrescente-se o erro das outras fontes, de intermediários (ex:tradutores) e falhas de comunicação do educador), ou por erro de interpretação do educando, e, a partir daí, talvez, repetida pelo educando, inclusive se este vier a tornar-se educador.
+
+Acho que esses três ... e se ... cobrem meus interesses de momento.
+
+O principal(?) processo utilizado para comunicar atividades segue um fluxo: proposta -> plano -> execução -> relatório. 
+
+Artigos científicos são um tipo de relatório.
+
+Aulas expositivas seguem um fluxo:
+
+preparação -> apresentação -> avaliação
+
+[Execução dos programas nos tutoriais Jena](ExecucaoTutoriaisJena.md)
+
