@@ -68,8 +68,9 @@ Resultados:
 - Bibliotecas;
 - documentação/sistematização;
 - exemplos;
-    - é possível instanciar planos, a partir da sistematização proposta no início do texto. Mermaid gera GANTT, Time prevê time:Start, time:End, time:Duration, PlansLite provê plans:MainGoal, plans:accomplishment, plans:achievement, plans:startTask, plans:CompletionTask, ... Provenance provê prov:Agent, prov:wasGeneratedBy, prov:wasAttributedTo, prov:wasDerivedFrom, ...
+    - é possível instanciar planos, a partir da sistematização proposta no início do texto. Mermaid gera GANTT, Time prevê time:Start, time:End, time:Duration, PlansLite provê plans:MainGoal, plans:Accomplishment, plans:Achievement, plans:startTask, plans:CompletionTask, ... Provenance provê prov:Agent, prov:wasGeneratedBy, prov:wasAttributedTo, prov:wasDerivedFrom, ...
         - isto é requisito para criar validadores de planos.
+        - a execução de planos pode divergir significativamente do planejado. Por isso convém haver plans:DeliberationTasks, eventuamente levando ao redesenho das etapas posteriores do plano, em função dos plans:Accomplishment e dos plans:Achievement. Convém que os redesenhos façam parte do plano, ou do acompanhamento da execução, o que indica que algum controle de versão pode ser necessário, assim como, ontologias para ligar planos à sua execução. Existem trabalhos acadêmicos nesse sentido.
     - é possível anotar conceitos (através de SKOS e DC), o que permite a uma pessoa anotar o que entendeu em aulas. Medidas de características do grafo resultante, ou comparação com grafos de referência podem ser usados para avaliar o entendimento.
     
 Insumos:
