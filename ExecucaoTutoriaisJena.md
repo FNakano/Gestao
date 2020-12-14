@@ -1,6 +1,40 @@
 Objetivo: Avaliar Jena como ferramenta para implementar ferramentas de gestão de conhecimento
 
-Objetivo: Fazer CRUD sobre A-Box com Jena
+Objetivo principal: Fazer CRUD sobre A-Box com Jena em linha de comando.
+
+```mermaid
+graph LR
+  G[Alguma ontologia de teste] -->|éInsumoDe| A[CRUD com Jena em linha de comando]
+  J[versão de SO e Java] -->|éPréCondiçãoDe| A[CRUD com Jena em linha de comando]
+  L[esta página] -->|éResultadoDe| A[CRUD com Jena em linha de comando]
+  B[Instalar Jena] -->|éSubPlanoDe| A[CRUD com Jena em linha de comando]
+  C[Testar Jena] -->|éSubPlanoDe| A
+  D[Examinar o que é atingível usando Jena] -->|éSubPlanoDe| A
+  E[Definir tarefas para atingir o objetivo principal] -->|éSubPlanoDe| A
+  F[atingir o objetivo principal] -->|éSubPlanoDe| A
+  F-->|dependeDe|E
+  E-->|dependeDe|D
+  D-->|dependeDe|C
+  C-->|dependeDe|B
+```
+
+```mermaid
+gantt
+    title A Gantt Diagram
+    dateFormat  YYYY-MM-DD
+    todayMarker off
+    section CRUD com Jena em linha de comando
+    Instalar Jena           : a1, 2020-12-10, 1d
+    Testar Jena     : a2, after a1  , 1d
+    Examinar o que é atingível      : a3, after a2  , 1d
+    Definir tarefas para atingir o objetivo principal      : a4, after a3, 1d
+    Atingir o objetivo principal : a5, after a4
+```
+
+![alt text](mermaid-diagram-20201213213606.svg)
+
+![alt text](mermaid-diagram-20201213213643.svg)
+
 
 Objetivo: Instalar Jena
 
