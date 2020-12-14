@@ -26,6 +26,54 @@ Aulas expositivas seguem um fluxo:
 
 preparação -> apresentação -> avaliação. A preparação, talvez seja similar à construção de um relatório e a avaliação à comparação entre grafos de conhecimento, ou ao levantamento de indicadores de qualidade desses grafos.
 
+É possível tratar planos como um conjunto de *atividades previstas*, que chamarei de *tarefas*, em alinhamento com a [ontologia PlansLite](http://www.ontologydesignpatterns.org/ont/dul/PlansLite.owl). PlansLite não contém owl:Axioms para lidar com atribuição de tarefas. A ontologia que contém owl:Axioms que expressam essa conexão é [Provenance](https://www.w3.org/TR/prov-overview/), <https://www.w3.org/TR/prov-o/>. Frequentemente, na minha área, prov:Entities são artigos, livros, projetos, editais - a ontologia para esse domínio é [Dublin Core](https://www.dublincore.org/specifications/dublin-core/dcmi-terms/). Existe um [documento da W3C que esclarece como conectar prov: a dc:](https://www.w3.org/TR/prov-dc/). As ontologias escolhidas não lidam com as relações entre eventos temporais. É possível usar a ontologia [Time](https://www.w3.org/TR/owl-time). Uma [seção desta ontologia explica como relacioná-la a Prov](https://www.w3.org/TR/owl-time/#time-prov). com essa finalidade. Caso prov:Entities sejam meios de produção, físicos, é possível que [Good Relations](http://www.productontology.org/) seja uma boa ontologia a se usar. 
+
+Há alguns utilitários que acredito que são necessários, e cujas partes podem ser úteis para construir outros utilitários:
+
+- visualizador de ontologias na forma de grafos;
+- editor de instâncias;
+
+## visualizador de ontologias na forma de grafos;
+
+Ferramenta para gerar especificações de grafos(diagramas) a partir de triplas. Estas especificações podem ser codificadas em alguma das especificações: GraphViz, GraphML, [GML Graph Modeling Language](https://en.wikipedia.org/wiki/Graph_Modelling_Language), renderizada usando GraphViz, Gephi, yEd, que contém ferramentas de layout.
+
+
+Resultados:
+- Bibliotecas;
+- documentação/sistematização;
+- exemplos;
+
+Insumos:
+- Jena;
+- yEd ou mermaid;
+- [Mapeamento de OWL para RDFS](https://www.w3.org/TR/owl-mapping-to-rdf/)
+    - a sistematização da informação em triplas (S,P,O) e grafos é característica de RDF e RDFS. OWL não tem essa sistematização nativa, inclusive porque deriva de conceitos em Lógica de Descrição, que prescindem deste elemento. Por outro lado o mapeamento bidirecional (talvez biunívoco) é possível e especificado no documento citado.
+     
+
+## criador de instâncias;
+
+Ontologias são especificações de vocabulários e relações. Agir não é sua função (SOSA define uma classe Procedure, o que não contradiz a a negação anterior). 
+
+Ações são executadas por *reasoners*. Programas que interpretam as especificações e executam ações em função da especificação (e da intenção do programador).
+
+Segue então a especificação de um *reasoner* que cria instâncias.
+
+- Importa ontologias (opcionalmente lhes atribui prefixos);
+- Apresenta três listas drop-down: {S,P,O};
+- Popula cada lista com todos os rdfs:Resources que podem ser usados;
+    - atualiza as listas dinamicamente, em função das outras escolhas já feitas, através das propriedades owl:domain, owl:range, marcações xsd:type, xsd:lang;
+- Apresenta o grafo de instâncias em formato de grafo.
+
+Resultados:
+- Bibliotecas;
+- documentação/sistematização;
+- exemplos;
+    - é possível instanciar planos, a partir da sistematização proposta no início do texto. Mermaid gera GANTT, Time prevê time:Start, time:End, time:Duration, PlansLite provê plans:MainGoal, plans:accomplishment, plans:achievement, plans:startTask, plans:CompletionTask, ... Provenance provê prov:Agent, prov:wasGeneratedBy, prov:wasAttributedTo,...
+
+Insumos:
+- Jena;
+- yEd ou mermaid;
+
 
 [Execução dos programas nos tutoriais Jena](ExecucaoTutoriaisJena.md)
 
