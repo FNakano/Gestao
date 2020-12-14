@@ -56,7 +56,7 @@ Ontologias são especificações de vocabulários e relações. Agir não é sua
 
 Ações são executadas por *reasoners*. Programas que interpretam as especificações e executam ações em função da especificação (e da intenção do programador).
 
-Segue então a especificação de um *reasoner* que cria instâncias.
+Segue então a especificação de um *reasoner* que cria instâncias. A interface do reasoner pode ser por navegador, o que incluiria Fuseki, e talvez Tomcat, aos insumos.
 
 - Importa ontologias (opcionalmente lhes atribui prefixos);
 - Apresenta três listas drop-down: {S,P,O};
@@ -68,10 +68,12 @@ Resultados:
 - Bibliotecas;
 - documentação/sistematização;
 - exemplos;
-    - é possível instanciar planos, a partir da sistematização proposta no início do texto. Mermaid gera GANTT, Time prevê time:Start, time:End, time:Duration, PlansLite provê plans:MainGoal, plans:accomplishment, plans:achievement, plans:startTask, plans:CompletionTask, ... Provenance provê prov:Agent, prov:wasGeneratedBy, prov:wasAttributedTo,...
-
+    - é possível instanciar planos, a partir da sistematização proposta no início do texto. Mermaid gera GANTT, Time prevê time:Start, time:End, time:Duration, PlansLite provê plans:MainGoal, plans:accomplishment, plans:achievement, plans:startTask, plans:CompletionTask, ... Provenance provê prov:Agent, prov:wasGeneratedBy, prov:wasAttributedTo, prov:wasDerivedFrom, ...
+        - isto é requisito para criar validadores de planos.
+    - é possível anotar conceitos (através de SKOS e DC), o que permite a uma pessoa anotar o que entendeu em aulas. Medidas de características do grafo resultante, ou comparação com grafos de referência podem ser usados para avaliar o entendimento.
+    
 Insumos:
-- Jena;
+- Jena, Fuseki, Tomcat;
 - yEd ou mermaid;
 
 
