@@ -430,10 +430,9 @@ Exception in thread &quot;main&quot; java.lang.IllegalArgumentException: File: v
   &lt;/rdf:Description&gt;
 &lt;/rdf:RDF&gt;
 <font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sobreJena/programas/Tutorial5</b></font>$  
+</pre>
 
 #### Tutorial 6
-
-</pre>
 
 <pre><font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sobreJena/programas</b></font>$ mkdir Tutorial6
 <font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sobreJena/programas</b></font>$ mv Tutorial06.java Tutorial6
@@ -455,6 +454,9 @@ The nicknames of &quot;John Smith&quot; are:
 <font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sobreJena/programas/Tutorial6</b></font>$  
 </pre>
 
+#### Tutorial 7
+
+
 <pre><font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sobreJena/programas</b></font>$ mkdir Tutorial7
 <font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sobreJena/programas</b></font>$ mv Tutorial07.java Tutorial7
 <font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sobreJena/programas</b></font>$ cd Tutorial7
@@ -475,10 +477,9 @@ The database contains vcards for:
   Matt Jones
   Becky Smith
 <font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sobreJena/programas/Tutorial7</b></font>$  
+</pre>
 
 #### Tutorial 8
-
-</pre>
 
 <pre><font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sobreJena/programas</b></font>$ mkdir Tutorial8
 <font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sobreJena/programas</b></font>$ mv Tutorial08.java Tutorial8
