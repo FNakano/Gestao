@@ -93,4 +93,6 @@ Insumos:
 
 
 [Execução dos programas nos tutoriais Jena](ExecucaoTutoriaisJena.md)
+[O que é Fuseki](Fuseki.md)
+[Os mesmos tutoriais com Fuseki](FusekiTutoriais.md)
 
