@@ -32,20 +32,20 @@ Este corresponde ao tutorial 5.
 1. Iniciar Fuseki;
 2. Acessar o servidor com um browser, acessando o endereço `localhost:3030`
 3. Criar um dataset, clicando em `manage Datasets`, `add new Dataset`;
-    - <Imagens/Captura%20de%20tela%20de%202020-12-26%2011-00-49.png>
+    - [Tela mostrando estado](Imagens/Captura%20de%20tela%20de%202020-12-26%2011-00-49.png);
 4. Baixar o arquivo vc-db-1.rdf das referências;
 5. Fazer upload do arquivo no Fuseki;
-    - <Imagens/Captura%20de%20tela%20de%202020-12-28%2014-46-53.png>
+    - [Tela mostrando estado](Imagens/Captura%20de%20tela%20de%202020-12-28%2014-46-53.png);
 6. Verificar, abrindo para edição;
-    - <Imagens/Captura%20de%20tela%20de%202020-12-28%2014-47-02.png>
+    - [Tela mostrando estado](Imagens/Captura%20de%20tela%20de%202020-12-28%2014-47-02.png);
 
 - Neste exemplo o dataset foi criado em memória. Os dados não persistem quando Fuseki for fechado. 
 
 #### Referências
 
 [Tutorial 5](https://jena.apache.org/tutorials/rdf_api.html#ch-Reading-RDF)
+
 [vc-db-1.rdf](https://jena.apache.org/tutorials/sparql_data/vc-db-1.rdf)
- 
 
 ### Fazer uma consulta SPARQL SELECT
 
@@ -78,19 +78,21 @@ INSERT DATA
 }
 ```
 3. Clicar no triângulo no canto superior direito da caixa de texto para executar a consulta;
-4. [Ver o resultado](Imagens/Captura%20de%20tela%20de%202020-12-28%2017-55-46.png);
+4. Resultou em *bad request* [Ver o resultado](Imagens/Captura%20de%20tela%20de%202020-12-28%2017-55-46.png);
 
 #### Comentários e conclusões
 
-UPDATE não é possível usando somente o navegador (`localhost:3030`). Precisa de um add on para gerar requisições POST.
+UPDATE não é possível usando somente o navegador (`localhost:3030`). Precisa de outra ferramenta (add-on, plugin) para gerar requisições POST.
 
 A origem da consulta usada para teste é: <https://www.w3.org/TR/sparql11-update/#example_1>
 
-<a name="especula" > A especulação sobre POST <\a> funcionar vem da [tela de informação do Fuseki](Imagens/Captura%20de%20tela%20de%202020-12-28%2018-00-17.png). Acessada pela [tela info](Imagens/Captura%20de%20tela%20de%202020-12-28%2017-59-57.png), reforçada pela [postagem em stack overflow](https://stackoverflow.com/questions/43474884/fuseki-sparql-insert-produces-the-error-400-sparql-query-no-query-paramete)
+<a name="especula" > A especulação sobre POST </a> funcionar vem da [tela de informação do Fuseki](Imagens/Captura%20de%20tela%20de%202020-12-28%2018-00-17.png). Acessada pela [tela info](Imagens/Captura%20de%20tela%20de%202020-12-28%2017-59-57.png), reforçada pela [postagem em stack overflow](https://stackoverflow.com/questions/43474884/fuseki-sparql-insert-produces-the-error-400-sparql-query-no-query-paramete)
 
 ### Fazer uma consulta SPARQL SELECT usando curl e POST
 
 **nota**: isto é um teste para ver se a 'receita' de Hector Correa usando CURL funciona.
+
+Escolhi curl porque o add-on que pensei em instalar **requer acesso à informação de todas as páginas que eu abrir**. Acho isso excessivo.
 
 1. [Ler RDF](FusekiTutoriais.md#Ler-RDF) para carregar alguma informação;
 2. Abrir um novo terminal e executar `curl -X POST -d "query=select ?s where { ?s ?p ?o . }" localhost:3030/mydataset/query`
@@ -198,7 +200,8 @@ Update succeeded
 </pre>
 
 [tela com mensagens nos terminais](Imagens/Captura%20de%20tela%20de%202020-12-28%2019-11-23.png)
-![tela de edição do dataset com as triplas inseridas](Imagens/Captura%20de%20tela%20de%202020-12-28%2019-13-04.png)
+
+[tela de edição do dataset com as triplas inseridas](Imagens/Captura%20de%20tela%20de%202020-12-28%2019-13-04.png)
 
 
 
