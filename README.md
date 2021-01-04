@@ -21,11 +21,17 @@ Gostaria de avisar que pretendo usar este repositório para trocar idéias com c
 
 [Como pretendo usar web semântica](UsoDeWebSemantica.md)
 
+[Avaliar Jena como ferramenta para implementar ferramentas de gestão de informação](AvaliaJena.md)
+
+[Como instalar Jena](InstalaJena.md)
+
 [Execução dos programas nos tutoriais Jena](ExecucaoTutoriaisJena.md)
 
-[O que é Fuseki](Fuseki.md)
+[O que é Fuseki](https://jena.apache.org/documentation/fuseki2/)
 
-[Alguns exemplos de uso de Fuseki](AlgunsExemplosDeUsoDeFuseki.md)
+[Como Instalar Fuseki](https://github.com/santanajods/domotic-swot#linux)
+
+[Alguns exemplos de uso de Fuseki feitos pelos autores](AlgunsExemplosDeUsoDeFuseki.md)
 
 [Os mesmos tutoriais com Fuseki](FusekiTutoriais.md)
 

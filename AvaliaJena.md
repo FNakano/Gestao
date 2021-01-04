@@ -1,4 +1,4 @@
-# Avaliar Jena como ferramenta para implementar ferramentas de gestão de conhecimento
+# Avaliar Jena como ferramenta para implementar ferramentas de gestão de informação
 
 **estado do documento**: em construção
 

@@ -28,5 +28,8 @@ Entre a codificação e a decodificação, no processo envolvendo indivíduos, o
 
 ### Conclusão
 
-Gestão de informação parece ser designação mais adequada, comparada a gestão de conhecimento, para o que pretende se fazer aqui.
+Gestão de informação parece ser designação mais adequada.
+
+A alternativa: gestão de conhecimento, tem mais apelo, mas é mais distante do que se pretende com este repositório E, considerando também o que se entende por conhecimento, aproxima-se da contradição.
+
 
