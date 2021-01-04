@@ -1,5 +1,7 @@
 # Gestão de Informação
 
+**estado do documento**: concluído, pode ser atualizado.
+
 ## Proposta
 
 A proposta neste repositório é armazenar e disponibilizar o que o(s) autor(es) acham útil disponibilizar. Por exemplo, o que têm feito, que assuntos, ferramentas, publicações atraíram seu interesse, como, quando, por quê usaram. O acesso é aberto, para outros indivíduos poderem construir sobre a informação disponibilizada.

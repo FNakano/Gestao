@@ -1,5 +1,7 @@
 # Os mesmos tutoriais com Fuseki
 
+**estado do documento**: em construção
+
 ## Objetivo
 
 Verificar quais tutoriais de Jena consigo executar em Fuseki com ajustes que considero mínimos.

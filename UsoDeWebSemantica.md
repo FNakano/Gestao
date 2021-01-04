@@ -1,5 +1,7 @@
 # Uso de Web semântica
 
+**estado do documento**: em construção
+
 ## Introdução
 
 Pretendo compartilhar minha percepção sobre o que pode ser feito usando web semântica.

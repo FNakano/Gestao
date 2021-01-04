@@ -1,218 +1,22 @@
-# Avaliar Jena como ferramenta para implementar ferramentas de gestão de conhecimento
+# Execução dos tutoriais de Jena.
 
-## Motivação
+**estado do documento**: concluído, não pretendo fazer atualizações.
 
-## Métodos
+## Objetivo
 
-SWOT: Strength, Weakness, Opportunities, Threats <https://pt.wikipedia.org/wiki/An%C3%A1lise_SWOT>;
-SMART: Specific, Measurable, Attainable, Relevant, Time-bound <https://thoughtfullearning.com/inquireHSbook/pg356>;
-WBS: Work Breakdown Structure <https://artia.com/blog/wbs-entenda-como-e-por-que-utilizar-uma-estrutura-analitica-de-projeto/>
-
-- Escolha das ferramentas consideradas necessárias para gestão de conhecimento;
-    - Revisão de bibliografia;
-    - brainstorm;
-    - avaliação de dificuldade (SWOT das ferramentas em avaliação);
-        - elaboração de planos de trabalho de "baixa resolução";
-
-- Construir, usando Jena, ferramentas escolhidas;
-    - elaboração de planos de trabalho de "alta resolução";
-        - SMART;
-        - WBS;
-        - usar PROV "manualmente" para criar um caso de teste;
-        - usar PlansLite "manualmente" para criar um caso de teste.
-    - Anotar os processos de construção: (SWOT do uso de Jena); 
-
-## Resultados esperados
-
-- ampliar conhecimento sobre web semântica;
-- ampliar conhecimento sobre Jena;
-- ter operando ferramentas de gestão de conhecimento
-
-## Pré-avaliação: análise exploratória de Jena.
-
-A natureza do objetivo principal deixa claro que atividades como:
-
-1. instalar Jena;
-2. fazer operações de dicionário;
-    1. há mais de uma forma para fazer?
-
-São necessárias, independente do detalhamento do plano para atingir o objetivo principal.
-
-
-### 1 Instalar Jena
-
-#### Pré-condições:
-
-*Sistema Operacional*
-
-<pre><font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sobreJena/programas/Tutorial1</b></font>$ cat /etc/os-release 
-NAME=&quot;Ubuntu&quot;
-VERSION=&quot;20.04.1 LTS (Focal Fossa)&quot;
-ID=ubuntu
-ID_LIKE=debian
-PRETTY_NAME=&quot;Ubuntu 20.04.1 LTS&quot;
-VERSION_ID=&quot;20.04&quot;
-HOME_URL=&quot;https://www.ubuntu.com/&quot;
-SUPPORT_URL=&quot;https://help.ubuntu.com/&quot;
-BUG_REPORT_URL=&quot;https://bugs.launchpad.net/ubuntu/&quot;
-PRIVACY_POLICY_URL=&quot;https://www.ubuntu.com/legal/terms-and-policies/privacy-policy&quot;
-VERSION_CODENAME=focal
-UBUNTU_CODENAME=focal
-</pre>
-
-*JDK*
-
-<pre><font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sobreJena/programas/Tutorial1</b></font>$ javac --version
-javac 11.0.9.1
-</pre>
-
-**nota:** é open-jdk, ou default-jdk. Com certeza não é o JDK da Oracle.
-
-#### Instruções para instalação
-
-1. Baixa de <https://jena.apache.org/download/index.cgi>, 
-2. ajusta a variável de ambiente em `.profile` e 
-3. chama `sparql --version`, conforme <https://jena.apache.org/documentation/tools/>
-
-*PATH* (depois de ajustar a variável de ambiente, conforme <https://jena.apache.org/documentation/tools/>)
-
-<pre><font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~</b></font>$ echo $PATH
-/home/fabio/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/fabio/apache-jena-3.17.0/bin
-<font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~</b></font>$ 
-</pre>
-
-*Checando se executa algo*
-<pre><font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~</b></font>$ sparql --version
-Jena:       VERSION: 3.17.0
-Jena:       BUILD_DATE: 2020-11-25T19:40:23+0000
-<font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~</b></font>$ 
-</pre>
-
-**Resultado**: Instalado.
-
-**Resultado Inesperado**: Jena tem um conjunto de ferramentas de linha de comando. É possível testar a instalação pela execução das ferramentas. Talvez seja possível fazer CRUD com as ferramentas de linha de comando.
-
-**Decisão, novo objetivo**: testar a instalação de Jena com as ferramentas de linha de comando.
-
-A documentação das ferramentas de linha de comando parece estar desatualizada: Ela instrui para usar comandos como `arq.query`, que parecem ser nomes de scripts na pasta $JENA_HOME/bin, mas digitando na linha de comando dá `command not found` e não existe esse arquivo na pasta indicada. Por outro lado, existe `arq` e executando `arq --home`, ele é executado.
-
-Segui [este tutorial](https://jena.apache.org/tutorials/sparql_query1.html). O resultado está a seguir.
-
-<pre><font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sobreJena</b></font>$ sparql --help
-sparql --data=&lt;file&gt; --query=&lt;query&gt;
-  Control
-      --explain              Explain and log query execution
-      --repeat=N or N,M      Do N times or N warmup and then M times (use for timing to overcome start up costs of Java)
-      --optimize=            Turn the query optimizer on or off (default: on)
-  Time
-      --time                 Time the operation
-  Query Engine
-      --engine=EngineName    Register another engine factory[ref]
-      --unengine=EngineName   Unregister an engine factory
-  Dataset
-      --data=FILE            Data for the dataset - triple or quad formats
-      --graph=FILE           Graph for default graph of the datset
-      --namedGraph=FILE      Add a graph into the dataset as a named graph
-  Results
-      --results=             Results format (Result set: text, XML, JSON, CSV, TSV; Graph: RDF serialization)
-      --desc=                Assembler description file
-  Query
-      --query, --file        File containing a query
-      --syntax, --in         Syntax of the query
-      --base                 Base URI for the query
-  Symbol definition
-      --set                  Set a configuration symbol to a value
-  General
-      -v   --verbose         Verbose
-      -q   --quiet           Run with minimal output
-      --debug                Output information for debugging
-      --help
-      --version              Version information
-      --strict               Operate in strict SPARQL mode (no extensions of any kind)
-<font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sobreJena</b></font>$ sparql --file q1.rq
------
-| x |
-=====
------
-<font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sobreJena</b></font>$ cat q1.rq 
-SELECT ?x
-WHERE
- { ?x &lt;http://www.w3.org/2001/vcard-rdf/3.0#FN&gt; &quot;John Smith&quot; }
-
-<font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sobreJena</b></font>$ sparql --data=vc-db-1.rdf  --file=q1.rq
---------------------------------
-| x                            |
-================================
-| &lt;http://somewhere/JohnSmith&gt; |
---------------------------------
-<font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sobreJena</b></font>$ 
-
-
-Seguindo <https://jena.apache.org/tutorials/sparql_basic_patterns.html>:
-
-</pre>
-
-<pre><font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sobreJena</b></font>$ sparql --data=vc-db-1.rdf  --file=g-bp.rq
-Failed to load Query: Not found: g-bp.rq
-<font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sobreJena</b></font>$ ls
-diario.md  q1.rq  q-bp1.rq  vc-db-1.rdf
-<font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sobreJena</b></font>$ sparql --data=vc-db-1.rdf  --file=q-bp1.rq
----------------------------------------------------
-| x                               | name          |
-===================================================
-| &lt;http://somewhere/JohnSmith&gt;    | &quot;John Smith&quot;  |
-| &lt;http://somewhere/SarahJones&gt;   | &quot;Sarah Jones&quot; |
-| &lt;http://somewhere/MattJones&gt;    | &quot;Matt Jones&quot;  |
-| &lt;http://somewhere/RebeccaSmith&gt; | &quot;Becky Smith&quot; |
----------------------------------------------------
-<font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sobreJena</b></font>$ 
-</pre>
-
-**Resultado**: é possivel fazer consultas sparql `SELECT` em linha de comando.
-
-**Decisão, novo objetivo**: Checar se é possível fazer CRUD com as ferramentas de linha de comando que acompanham o pacote.
-
-Tentei uma query `INSERT`: ins1.rq, listada abaixo:
-
-```
-PREFIX dc: <http://purl.org/dc/elements/1.1/>
-INSERT DATA
-{ 
-  <http://example/book1> dc:title "A new book" ;
-                         dc:creator "A.N.Other" .
-}
-```
-
-executada com `sparql --data=vc-db-1.rdf  --file=ins1.rq`
-
-recebi como resposta:
-
-<pre><font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sobreJena</b></font>$ sparql --data=vc-db-1.rdf  --file=ins1.rq
-Encountered &quot; &lt;INSERT_DATA&gt; &quot;INSERT DATA &quot;&quot; at line 2, column 1.
-Was expecting one of:
-    &quot;base&quot; ...
-    &quot;prefix&quot; ...
-    &quot;select&quot; ...
-    &quot;json&quot; ...
-    &quot;describe&quot; ...
-    &quot;construct&quot; ...
-    &quot;ask&quot; ...
-    
-</pre>
-
-**Resultado**: acho que em linha de comando não dá para fazer `INSERT`.
-
-**Decisão, novo objetivo**: explorar os tutoriais de código: <https://jena.apache.org/tutorials/rdf_api.html>
-
-**sub-objetivo**: Compilar e executar os exemplos
+Compilar e executar os tutoriais de código: <https://jena.apache.org/tutorials/rdf_api.html>
 
 **nota**: as explicações sobre cada tutorial são apresentadas na respectiva página do tutorial.
 
-**método**: A fim de não modificar os exemplos recebidos junto com Jena, copiei todos os 11 exemplos para um novo diretório. Para não misturar arquivos relativos a cada exemplo, crio um sub-diretório para cada exemplo, movo o código-fonte, compilo e, se necessário, acrescento os arquivos de dados. Para vários exemplos os arquivos de dados são iguais. Há multiplicação de arquivos de dados idênticos, mas acho que não é grande prejuízo.
+## Método
+
+A fim de não modificar os exemplos recebidos junto com Jena, copiei todos os 11 exemplos para um novo diretório. Para não misturar arquivos relativos a cada exemplo, crio um sub-diretório para cada exemplo, movo o código-fonte, compilo e, se necessário, acrescento os arquivos de dados. Para vários exemplos os arquivos de dados são iguais. Há multiplicação de arquivos de dados idênticos, mas acho que não é grande prejuízo.
 
 **nota**: Os códigos-fonte contém a linha `package jena.examples.rdf ;`. Caso ela seja mantida, informa que o código pertence a um pacote (que corresponde a uma hierarquia de diretórios). A compilação precisa ser algo como `javac jena/examples/rdf/TutorialX.java` e a execução `java jena/examples/rdf/TutorialX`.
 
-#### Tutorial 1
+## Resultados
+
+### Tutorial 1
 
 <pre><font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sobreJena/programas/Tutorial1</b></font>$ javac -cp /home/fabio/apache-jena-3.17.0/lib  Tutorial01.java 
 Tutorial01.java:21: error: package org.apache.jena.rdf.model does not exist
@@ -320,7 +124,7 @@ Acho também que esta string (só) funciona em Linux. Em Windows talvez seja "s�
 
 Da primeira vez que fiz, como o código não escreve nada na tela, fiquei meio em dúvida se executou algo (hipótese de mundo aberto: pode existir algo que eu não sei e que faz esse comando não executar o programa e não dar mensagem de erro), então inseri um `System.out.println`.
  
-#### Tutorial 2
+### Tutorial 2
 
 <pre><font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sobreJena/programas/Tutorial2</b></font>$ ls
 Tutorial02.class  Tutorial02.java
@@ -337,7 +141,7 @@ Tutorial02.class  Tutorial02.java
 <font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sobreJena/programas/Tutorial2</b></font>$ cat Tutorial02.java 
 </pre>
 
-#### Tutorial 3
+### Tutorial 3
 
 <pre><font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sobreJena/programas/Tutorial3</b></font>$ javac -cp &apos;.:/home/fabio/apache-jena-3.17.0/lib/*&apos; Tutorial03.java
 <font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sobreJena/programas/Tutorial3</b></font>$ java -cp &apos;.:/home/fabio/apache-jena-3.17.0/lib/*&apos; Tutorial03
@@ -349,7 +153,7 @@ http://somewhere/JohnSmith http://www.w3.org/2001/vcard-rdf/3.0#FN  &quot;John S
 
 </pre>
 
-#### Tutorial 4
+### Tutorial 4
 
 <pre><font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sobreJena/programas</b></font>$ mkdir Tutorial4
 <font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sobreJena/programas</b></font>$ mv Tutorial04.java Tutorial4
@@ -375,7 +179,7 @@ Tutorial04.java
 
 </pre>
 
-#### Tutorial 5
+### Tutorial 5
 
 <pre><font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sobreJena/programas</b></font>$ mkdir Tutorial5
 <font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sobreJena/programas</b></font>$ mv Tutorial05.java Tutorial5
@@ -432,7 +236,7 @@ Exception in thread &quot;main&quot; java.lang.IllegalArgumentException: File: v
 <font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sobreJena/programas/Tutorial5</b></font>$  
 </pre>
 
-#### Tutorial 6
+### Tutorial 6
 
 <pre><font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sobreJena/programas</b></font>$ mkdir Tutorial6
 <font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sobreJena/programas</b></font>$ mv Tutorial06.java Tutorial6
@@ -454,7 +258,7 @@ The nicknames of &quot;John Smith&quot; are:
 <font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sobreJena/programas/Tutorial6</b></font>$  
 </pre>
 
-#### Tutorial 7
+### Tutorial 7
 
 
 <pre><font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sobreJena/programas</b></font>$ mkdir Tutorial7
@@ -479,7 +283,7 @@ The database contains vcards for:
 <font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sobreJena/programas/Tutorial7</b></font>$  
 </pre>
 
-#### Tutorial 8
+### Tutorial 8
 
 <pre><font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sobreJena/programas</b></font>$ mkdir Tutorial8
 <font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sobreJena/programas</b></font>$ mv Tutorial08.java Tutorial8
@@ -503,7 +307,7 @@ Arquivo auxiliar: <https://jena.apache.org/tutorials/sparql_data/vc-db-3.rdf>
 
 Diretório contendo arquivos auxiliares: <https://jena.apache.org/tutorials/sparql_data/>
 
-#### Tutorial 9
+### Tutorial 9
 
 <pre><font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sobreJena/programas</b></font>$ mkdir Tutorial9
 <font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sobreJena/programas</b></font>$ mv Tutorial09.java Tutorial9
@@ -546,7 +350,7 @@ Exception in thread &quot;main&quot; java.lang.IllegalArgumentException: File: v
 
 <font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sobreJena/programas/Tutorial9</b></font>$  
 
-#### Tutorial 10
+### Tutorial 10
 
 </pre>
 
@@ -609,7 +413,7 @@ The bag contains:
 
 </pre>
 
-#### Tutorial 11
+### Tutorial 11
 
 <pre><font color="#859900"><b>abio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sobreJena/programas</b></font>$ mkdir Tutorial11
 <font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sobreJena/programas</b></font>$ mv Tutorial11.java Tutorial11
@@ -633,7 +437,7 @@ _:Bb1a830e6X2D28b0X2D4d92X2D89c2X2D97f082ba1a83 &lt;http://www.w3.org/2000/01/rd
 
 </pre>
 
-### Sumário de resultados
+## Sumário de resultados
 
 1. O tutorial 1 mostra como **C**riar instâncias. Inicia Inicia com um nó contendo o IRI 'da pessoa';
 2. O tutorial 2 mostra como associar o nó a outros recursos (se a terminologia for RDF), ou indivíduos (se a terminologia for OWL). O conjunto representa uma pessoa. Inicia com um nó contendo o IRI 'da pessoa', conecta este nó, através de predicados (se a terminologia for RDF), ou propriedades de dados (dataProperty, dataPropertyAssertion, se a terminologia for OWL): `vcard:FN`, `vcard:N`, `vcard:Family`, `vcard:Given` aos nós que contém as instâncias: 'John Smith', 'John', 'Smith'. Resta saber:
@@ -653,12 +457,13 @@ _:Bb1a830e6X2D28b0X2D4d92X2D89c2X2D97f082ba1a83 &lt;http://www.w3.org/2000/01/rd
 10. O tutorial 10 mostra como usar as coleções definidas em RDF: Bag, Alt, Seq.
 11. O tutorial 11 apresenta como Jena codifica tipos de dados e idiomas. Tem relação com XML Schema, elementos como `^^Integer` e `@en`, embora não apresente isto explicitamente.
 
-### Conclusão
+## Conclusão e Discussão
+
+Tutoriais executados.
 
 Eu tinha esperança que os tutoriais apresentassem uma resposta direta ao que eu considero CRUD. Expectativa frustrada. Eles trazem elementos, uns até 'mais avançados', na minha concepção.
 
 Convém considerar a criação de um tutorial apresentando o que considero CRUD usando Jena. Ainda não atingi o objetivo principal.
-
 
 ## Elementos de texto que usei em algum momento mas não se encaixam na versão corrente
 

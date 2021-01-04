@@ -1,5 +1,7 @@
 # Sobre a escolha do nome do repositório
 
+**estado do documento**: concluído, não pretendo fazer atualizações
+
 Busquei, na esperança de existir, um texto que definisse claramente e diferenciasse *conhecimento* e *informação*, sem restringir o domínio a Computação. Achei um [1] que, na minha interpretação, indica que vou continuar *na esperança*, e outro [2] que, indica que formulei mal a busca e que para esta formulação não existe resposta. A boa formulação seria por uma definição e diferenciação *satisfatória* (para mim). Uma alternativa, não posso pressupor que seja a única, é apresentada. (**nota** nem *claramente* nem *satisfatória* faziam parte da chave de busca: `difference between knowledge and information`).
 
 A idéia de gestão de conhecimento é citada em [1] e em [3]. Existe analogia entre uma parte da discussão em [3] e a distinção entre T-box e A-box.
