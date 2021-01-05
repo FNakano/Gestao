@@ -1,6 +1,6 @@
 # Gestão de Informação
 
-**estado do documento**: concluído, pode ser atualizado.
+**estado do documento**: pode ser atualizado.
 
 ## Proposta
 
@@ -23,6 +23,8 @@ Gostaria de avisar que pretendo usar este repositório para trocar idéias com c
 > Alguém puxa um pelo, vem um gato pendurado...
 > ... ouvi esta de um colega. Ficarei feliz em dizer quem é, se ele permitir...
 
+*No momento, tendo a dizer que se vier um gato, a melhor ação é documentar o gato. Compartilhei uma decisão que tomei. O modelo e dados para tomada de decisão: Dá trabalho. Pode ter pouca ou muita utilidade. Isto estabelece um problema de decisão e, na minha opinião, é vinculado a um problema de otimização. Como utilidade listo: 1) pode ser usado em aulas; 2) pode ser usado em trabalhos futuros; 3) pode ser usado em argumentos; 4) pode servir como base para criar algo; 5) pode servir aos outros;...*
+
 ## Conteúdo
 
 [Considerações sobre a escolha do nome do repositório](EscolhaDoNome.md)
@@ -39,7 +41,13 @@ Gostaria de avisar que pretendo usar este repositório para trocar idéias com c
 
 [Como Instalar Fuseki](https://github.com/santanajods/domotic-swot#linux)
 
-[Alguns exemplos de uso de Fuseki feitos pelos autores](AlgunsExemplosDeUsoDeFuseki.md)
+[Alguns exemplos de uso de Fuseki feitos pelos autores](AlgunsExemplosDeUsoDeFuseki.md): Base para aplicar os tutoriais de Jena usando um servidor Fuseki.
+
+[SPARQL, entailment, HTTP,...](UsandoSPARQL.md) - inicial
+
+[Usando Wikidata](UsandoWikidata.md) - inicial
+
+[Usando XSLT](UsandoXLST.md) - inicial
 
 [Os mesmos tutoriais com Fuseki](FusekiTutoriais.md)
 

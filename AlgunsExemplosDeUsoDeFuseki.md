@@ -4,7 +4,7 @@
 
 Os tutoriais da documentação de Jena a que me refiro são compostos por programas em Java que quando executados operam sobre uma base de conhecimento.
 
-Há algumas formas de usar Fuseki que considero úteis, mas são parte, ou são requisitos, para executar os tutoriais da documentação de Jena usando Fuseki.
+Há algumas formas de usar Fuseki que considero úteis, mas são parte, ou são requisitos, para executar, com Fuseki, os tutoriais da documentação de Jena.
 
 Quando a forma de uso corresponder a um tutorial, sua execução será documentada aqui.
 
@@ -211,6 +211,13 @@ Update succeeded
 
 [tela de edição do dataset com as triplas inseridas](Imagens/Captura%20de%20tela%20de%202020-12-28%2019-13-04.png)
 
+### Usar a instalação de Fuseki para servir páginas HTML.
+
+Precisei modificar o `index.html` da minha instalação de Fuseki para conseguir renderizar um XML específico. O navegador não permitia o acesso.
+
+Isto permite usar javascript no navegador, o que pode ser bastante útil.
+
+A pasta que contém as páginas é `FUSEKI_HOME/webapp`. Modifiquei o `index.html`, acrescentei uma pasta e, dentro dela, dois arquivos. Serviu as páginas conforme esperado.
 
 
 
