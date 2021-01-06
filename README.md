@@ -47,7 +47,7 @@ Gostaria de avisar que pretendo usar este repositório para trocar idéias com c
 
 [Usando Wikidata](UsandoWikidata.md) - inicial
 
-[Usando XSLT](UsandoXLST.md) - inicial
+[Usando XSLT](UsandoXSLT.md) - inicial
 
 [Os mesmos tutoriais com Fuseki](FusekiTutoriais.md)
 
