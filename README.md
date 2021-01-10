@@ -25,11 +25,36 @@ Gostaria de avisar que pretendo usar este repositório para trocar idéias com c
 
 *No momento, tendo a dizer que se vier um gato, a melhor ação é documentar o gato. Compartilhei uma decisão que tomei. O modelo e dados para tomada de decisão: Dá trabalho. Pode ter pouca ou muita utilidade. Isto estabelece um problema de decisão e, na minha opinião, é vinculado a um problema de otimização. Como utilidade listo: 1) pode ser usado em aulas; 2) pode ser usado em trabalhos futuros; 3) pode ser usado em argumentos; 4) pode servir como base para criar algo; 5) pode servir aos outros;...*
 
+Uso muitas ferramentas criadas no domínio da web semântica. Há consenso (acredito que grande consenso) que a principal entidade que cria as normas e recomendações ligadas à infraestrutura desse domínio é a W3C. Por exemplo, HTML, XML, RDF, OWL, seguem normas e recomendações da entidade. W3Schools, ao que me consta, é uma ramificação da W3C que treina e certifica profissionais.
+
+As normas e recomendações às vezes associam nomes iguais a construções ligeiramente diferentes, o que demanda atenção adicional de quem lê. Por exemplo:
+
+No *Document Object Model* (DOM) de XML [apud W3Schools](https://www.w3schools.com/xml/dom_nodes.asp), *tudo num documento XML é um nó*. No modelo de dados RDF, um nó é uma 'figura' (termo meu) em um grafo e há três tipos de nós [Fonte: conceitos de RDF em W3C](https://www.w3.org/TR/2014/REC-rdf11-concepts-20140225/#data-model)
+
+> According to the XML DOM, everything in an XML document is a node:
+>    The entire document is a document node
+>    Every XML element is an element node
+>    The text in the XML elements are text nodes
+>    Every attribute is an attribute node
+>    Comments are comment nodes
+[Fonte: W3Schools](https://www.w3schools.com/xml/dom_nodes.asp)
+
+> The core structure of the abstract syntax is a set of triples, each consisting of a subject, a predicate and an object. A set of such triples is called an RDF graph. An RDF graph can be visualized as a node and directed-arc diagram, in which each triple is represented as a node-arc-node link.
+> (...)
+> There can be three kinds of nodes in an RDF graph: IRIs, literals, and blank nodes.
+[Fonte: conceitos de RDF em W3C](https://www.w3.org/TR/2014/REC-rdf11-concepts-20140225/#data-model)
+
+A demanda de atenção é maior quando os dois conceitos: XML e RDF são usados juntos, por exemplo quando [RDF é serializado (armazenado em um arquivo, ou transmitido) em XML](https://www.w3.org/TR/rdf-syntax-grammar/#section-Syntax). O cuidado em especificar qual conceito é usado é notável, mas, sempre há chance de alguma parte do texto, ou de outros textos não serem escritos com tanto cuidado.
+
+Talvez, prefixar os domínios, como feito em XML e em RDF, diminua a confusão. Palavras como `xml:nó` e `rdf:nó` seriam usadas.
+
 ## Conteúdo
 
 [Considerações sobre a escolha do nome do repositório](EscolhaDoNome.md)
 
 [Como pretendo usar web semântica](UsoDeWebSemantica.md)
+
+[Fornecer Informação de Contexto](contexto.md)
 
 [Avaliar Jena como ferramenta para implementar ferramentas de gestão de informação](AvaliaJena.md)
 
