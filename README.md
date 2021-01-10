@@ -44,7 +44,7 @@ No *Document Object Model* (DOM) de XML [apud W3Schools](https://www.w3schools.c
 > There can be three kinds of nodes in an RDF graph: IRIs, literals, and blank nodes.
 [Fonte: conceitos de RDF em W3C](https://www.w3.org/TR/2014/REC-rdf11-concepts-20140225/#data-model)
 
-A demanda de atenção é maior quando os dois conceitos: XML e RDF são usados juntos, por exemplo quando [RDF é serializado (armazenado em um arquivo, ou transmitido) em XML](https://www.w3.org/TR/rdf-syntax-grammar/#section-Syntax). O cuidado em especificar qual conceito é usado é notável, mas, sempre há chance de alguma parte do texto, ou de outros textos não serem escritos com tanto cuidado.
+A demanda de atenção é maior quando os dois conceitos: XML e RDF são usados juntos, por exemplo quando [RDF é serializado (armazenado em um arquivo, ou transmitido) em XML](https://www.w3.org/TR/rdf-syntax-grammar/#section-Syntax). No documento, o cuidado em especificar qual conceito é usado é notável, mas, sempre há chance de alguma parte do texto, ou de outros textos, não serem escritos com tanto cuidado.
 
 Talvez, prefixar os domínios, como feito em XML e em RDF, diminua a confusão. Palavras como `xml:nó` e `rdf:nó` seriam usadas.
 
@@ -54,7 +54,11 @@ Talvez, prefixar os domínios, como feito em XML e em RDF, diminua a confusão. 
 
 [Como pretendo usar web semântica](UsoDeWebSemantica.md)
 
-[Fornecer Informação de Contexto](contexto.md)
+[Fornecer Informação sobre o ambiente de desenvolvimento/execução](contexto.md)
+
+[Conceitos mínimos de XML para avançar para os tópicos XML:RDF, SPARQL, XSLT contidos neste repositório](XMLRapido.md)
+
+[Comentários sobre XML:RDF](XML-RDF.md)
 
 [Avaliar Jena como ferramenta para implementar ferramentas de gestão de informação](AvaliaJena.md)
 
@@ -74,5 +78,8 @@ Talvez, prefixar os domínios, como feito em XML e em RDF, diminua a confusão. 
 
 [Usando XSLT](UsandoXSLT.md) - inicial
 
-[Os mesmos tutoriais com Fuseki](FusekiTutoriais.md)
+[Exemplos de uso de Fuseki - precedem 'os mesmos tutoriais com Fuseki'](AlgunsExemplosDeUsoDeFuseki.md)
+
+[Os mesmos tutoriais com Fuseki](FusekiTutoriais.md) - inicial
+
 

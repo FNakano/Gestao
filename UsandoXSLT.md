@@ -4,7 +4,7 @@
 
 ## Introdução
 
-É uma ferramenta que permite aplicar transformações sobre XML. As transformações são codificadas num 'dialeto' específico de XML, com IRI `http://www.w3.org/1999/XSL/Transform`. Já vi referenciado como XSL e como XSLT. Usualmente a extensão do arquivo é `.xsl`. A ferramenta é denominada, genericamente, *XSLT Processor*. Navegadores tem a ferramenta embutida. Existem ferramentas *standalone* como Saxon,que tem [versão gratuita](https://sourceforge.net/projects/saxon/files/).
+É uma ferramenta que permite aplicar transformações sobre XML. As transformações são codificadas num 'dialeto' específico de XML, com IRI `http://www.w3.org/1999/XSL/Transform`. Já vi referenciado como XSL e como XSLT. Usualmente a extensão do arquivo que contém a especificação da transformação é `.xsl`. A ferramenta é denominada, genericamente, *XSLT Processor*. Navegadores têm a ferramenta embutida. Existem ferramentas *standalone* como Saxon,que tem [versão gratuita](https://sourceforge.net/projects/saxon/files/).
 
 Em uma abordagem superficial, XSLT é uma transformação sobre XML, semelhante a CSS,que é uma transformação sobre HTML.
 
@@ -12,7 +12,17 @@ As transformações possíveis com XSLT incluem troca de tags XML, inclusão, ex
 
 **nota**: Não procurei em referências científico-acadêmicas a definição de Turing-Completo, nem a demonstração que XSLT é Turing-Completa.
 
-Um ['curso' sobre XSLT está disponível em W3CSchools](https://www.w3schools.com/xml/xsl_intro.asp).
+Atualmente a especificação XSLT está na [versão 3.0](https://www.w3.org/TR/2017/REC-xslt-30-20170608/). Um ['curso' sobre XSLT versão 1.0 está disponível em W3CSchools](https://www.w3schools.com/xml/xsl_intro.asp). A especificação traz as definições de termos explicitamente, contém exemplos, em resumo, contém mais informação e é mais volumosa. O curso apresenta exemplos para replicar, modificar e ver funcionando, com os conceitos necessários para entender o exemplo, sem abordar o funcionamento da ferramenta.
+
+Tenho interesse particular em transformar um formato de codificação de grafos, como graphML ou GML para RDF e vice-versa. Estou inclinado a usar GML (mais precisamente, XGML) pois o graphML gerado pelo yEd é bem complicado, enquanto o XGML parece menos complicado.
+
+## Abordagem escolhida
+
+Navegadores têm um processador XSLT embutido, mas seu controle de segurança e privacidade está configurado de maneira que não permite a execução das transformações armazenadas localmente (ver Discussão). Por isso um servidor web passa a ser necessario. Como tenho Fuseki (Jetty) instalado, é este que será usado. A pasta que contém as páginas é `FUSEKI_HOME/webapp`. Acrescentei uma pasta e, dentro dela, um índice e os arquivos de teste, resultados e cópias de tela. Uma cópia da pasta está neste repositório Github. O endereço de acesso na minha instalação é `http://localhost:3030/xslt/index.html`
+
+## Resultados
+
+### 1
 
 Existem alguns projetos que empregam XSLT para converter XML Schema para XML:RDF :
 
@@ -22,7 +32,10 @@ Existem alguns projetos que empregam XSLT para converter XML Schema para XML:RDF
 
 O uso nessa transformação foi objeto de análise por um grupo da W3C. [Wiki da W3C](https://www.w3.org/community/rax/wiki/XML_to_RDF_Transformation_processes_using_XSLT)
 
-Tenho interesse particular em transformar um formato de codificação de grafos, como graphML ou GML para RDF e vice-versa. Estou inclinado a usar GML (mais precisamente, XGML) pois o graphML gerado pelo yEd é bem complicado, enquanto o XGML parece menos complicado.
+### 2
+
+XSLT usa XPATH.
+
 
 ` <xsl:apply-templates/>` aplica os templates no nó corrente e nos filhos, mas não aplica recursivamente.
 
@@ -45,7 +58,8 @@ Os tipos de nós definidos em XML são:
 - comment nodes
 
 [node](https://www.w3schools.com/xml/dom_nodes.asp)
-[XML Rápido](XMLRapido.md)
+
+[Conceitos mínimos de XML para avançar para os tópicos XML:RDF, SPARQL, XSLT contidos neste repositório](XMLRapido.md)
 
 Nós sem pais nem filhos só podem ser valores e são designados valores atômicos (*atomic values*)
 
@@ -160,6 +174,32 @@ case
 
 with-param 	Defines the value of a parameter to be passed into a template
 passagem de parâmetro em chamada de procedimento.
+
+### 3
+
+São dez testes ao todo, acessados por [Testes e resultados](xslt/index.html) (para executar, copiar a pasta para dentro da pasta webapp de Fuseki e acessar o conteúdo com o navegador). Abaixo um resumo:
+
+Teste 1: o do primeiro tutorial da W3Schools. [Fonte: W3S](https://www.w3schools.com/xml/xsl_intro.asp)
+Teste 5: transformação 'identidade'.[Fonte: stackoverflow](https://stackoverflow.com/questions/953197/how-do-you-output-the-current-element-path-in-xslt/10112579)
+Teste 10: Teste superficial de suporte do navegador para migrar para XSLT versão 3.0, que tem mais funcionalidades que a versão 1.0. [Recomendação XLST versão 3.0: Fonte: W3C](https://www.w3.org/TR/2017/REC-xslt-30-20170608/).
+
+Os outros testes são passos incrementais dos citados no resumo.
+
+## Discussão 
+
+Acreditei que como navegadores têm processador XSLT embutido, seria possível experimentar com XSLT sem um servidor web, apenas com `file:///arquivo.xml` na barra de endereço. Porém, quando tentei, a transformação não foi feita. A busca pela solução, e pelo motivo, trouxe resultados desordenados, que apresento abaixo conforme minha forma de organizar.
+
+Em 2019 foi detectada uma [característica do navegador que poderia ser explorada por programas maliciosos](https://www.mozilla.org/en-US/security/advisories/mfsa2019-21/#CVE-2019-11730): Arquivos locais `file:///` podiam se localizar e se acessar mutuamente, mesmo que tivessem origem diferente. Por exemplo, seria possível enviar cópias de arquivos locais para um servidor, por exemplo.
+
+A funcionalidade do navegador que controla isso está em [Cross Origin Resource Sharing (CORS)](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS). O controle, bloqueado por padrão, [pode ser habilitado por configuração de usuário](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Access-Control-Allow-Origin).
+
+Isto foi corrigido, mas tornou transformações XSL locais inoperantes:
+
+- https://support.mozilla.org/en-US/questions/1264318
+- https://bugzilla.mozilla.org/show_bug.cgi?id=1566029
+- https://bugzilla.mozilla.org/show_bug.cgi?id=1565261
+
+Como consequência, só é possível experimentar com XSLT sem um servidor web reduzindo a segurança no navegador. Achei melhor usar um servidor web. O que tenho instalado é Fuseki (Jetty, para ser mais preciso).
 
 ## Outras Referências
 

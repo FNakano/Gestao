@@ -1,5 +1,7 @@
 # XML Rápido
 
+**estado do documento**: pode ser atualizado.
+
 # Exemplo
 
 ``` xml
@@ -14,6 +16,13 @@
 
 Conceitos:
 
+O formato XML (eXtensible Markup Language) foi concebido para ser flexível, consequentemente define poucas estruturas, e **poder** representar qualquer coisa.
+
+XSLT, XML:RDF também são formatos, especificações (no sentido OOP da palavra, antônimo: generalizações) de XML. Seria possível falar em formatos derivados de XML (emprestando *derived class*, expressão criada no contexto de C++).
+
+Um particular arquivo `.xml` contém a representação de algo em XML. Caso seja um arquivo `.xsl` contém a representação de uma transformação. Caso seja um arquivo `.rdf`, contém a representação de um grafo de conhecimento. Lembrando que a associação entre conteúdo do arquivo e a extensão em seu nome pode ser diferente em diferentes sistemas operacionais.
+
+Uma consequência desse contexto é: `afirmar que um arquivo está no formato XML pode não ser informação suficiente para algum contexto específico`.
 
 [tag]() `<note>`
 
@@ -94,11 +103,21 @@ Desta forma, é possível definir vários domínios, qualificar (prefixar) os id
 
 Um documento XML pode ser visto como uma árvore (*node tree*) e sempre contém um (único) nó raiz (*root node*). A terminologia filho, pai, ... é herdada da teoria de grafos.
 
-## sobre continuidade
+## sobre a continuidade da leitura a partir deste documento
 
-A referência contém muitos usos de XML, com exemplos. Meu interesse imediato relacionado a XML é [XML Transformations (XSLT](https://www.w3schools.com/xml/xsl_intro.asp). A sequência da exploração está [aqui](UsandoXSLT.md).
+A referência contém muitos usos de XML, com exemplos. Meu interesse imediato relacionado a XML é . A sequência da exploração está [aqui](UsandoXSLT.md).
 
 ## Referências
 
-[XML em w3schools](https://www.w3schools.com/xml/default.asp)
+[XML em W3Schools](https://www.w3schools.com/xml/default.asp)
+
+[XSLT em W3Schools](https://www.w3schools.com/xml/xsl_intro.asp)
+
+[RDF em W3Schools](https://www.w3schools.com/xml/xml_rdf.asp)
+
+[Especificação de XML em W3C](https://www.w3.org/TR/xml/)
+
+[Especificação de XSLT em W3C](https://www.w3.org/TR/xslt/)
+
+[Especificação de RDF em W3C](https://www.w3.org/TR/rdf11-primer/)
 

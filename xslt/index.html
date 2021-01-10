@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8" />
+ </head>
+<body>
+<h1> Testes XSLT </h1>
+
+<h2 id="configura"> Configuração do sistema </h2>
+
+
+<pre><font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~</b></font>$ firefox --version
+Mozilla Firefox 84.0.1
+<font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~</b></font>$ apache-jena-fuseki-3.17.0/fuseki-server --version
+ 
+Jena:       VERSION: 3.17.0
+Jena:       BUILD_DATE: 2020-11-25T19:40:23+0000
+TDB:        VERSION: 3.17.0
+TDB:        BUILD_DATE: 2020-11-25T19:40:23+0000
+Fuseki:     VERSION: 3.17.0
+Fuseki:     BUILD_DATE: 2020-11-25T19:40:23+0000
+<font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~</b></font>$ 
+<font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~</b></font>$ cat /etc/os-release 
+NAME=&quot;Ubuntu&quot;
+VERSION=&quot;20.04.1 LTS (Focal Fossa)&quot;
+ID=ubuntu
+ID_LIKE=debian
+PRETTY_NAME=&quot;Ubuntu 20.04.1 LTS&quot;
+VERSION_ID=&quot;20.04&quot;
+HOME_URL=&quot;https://www.ubuntu.com/&quot;
+SUPPORT_URL=&quot;https://help.ubuntu.com/&quot;
+BUG_REPORT_URL=&quot;https://bugs.launchpad.net/ubuntu/&quot;
+PRIVACY_POLICY_URL=&quot;https://www.ubuntu.com/legal/terms-and-policies/privacy-policy&quot;
+VERSION_CODENAME=focal
+UBUNTU_CODENAME=focal
+<font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~</b></font>$ 
+
+</pre>
+
+<h2 id="convencoes"> Convenções </h2>
+
+<pre>
+[Arquivo a transformar (entrada)] --[transformação]--> [Arquivo transformado (saída)]
+                                        ^
+[Arquivo que codifica a transformação]--|
+
+</pre>
+
+<p>Transformação-identidade: transformação que apresenta como saída o mesmo que recebeu como entrada. <b>Nota</b>: <em>o mesmo</em> pode ter interpretações e implementações diferentes.</p>
+
+
+<h2 id="teste1"> Teste 1 </h2>
+
+
+<p> <a href="teste1/cdcatalog.xml"> cdcatalog original </a> </p> 
+<p> <a href="teste1/cdcatalog.xsl"> definição da transformação </a> </p>
+<p> <a href="teste1/cdcatalog2.xml"> cdcatalog com link para transformação </a> </p>
+
+<img src="teste1/Captura%20de%20tela%20de%202021-01-06%2013-52-26.png" width=960 height=540 />
+
+<h2 id="teste2"> Teste 2 </h2>
+
+<p> Objetivo: testar quando o arquivo que codifica a transformação não está presente.</p>
+
+<p> <a href="teste2/cdcatalog.xml"> cdcatalog original </a> </p>
+<p> <a href="teste2/cdcatalog.xsl"> definição da transformação </a> </p>
+<p> <a href="teste2/cdcatalog2.xml"> cdcatalog com link para transformação </a> </p>
+
+<img src="teste2/Captura%20de%20tela%20de%202021-01-06%2013-51-32.png"  width=960 height=540 />
+
+<h2 id="teste3"> Teste 3 </h2>
+
+<p> Objetivo: testar quando o arquivo que codifica a transformação está vazio.</p>
+
+<p> <a href="teste3/cdcatalog.xml"> cdcatalog original </a> </p>
+<p> <a href="teste3/cdcatalog.xsl"> definição da transformação </a> </p>
+<p> <a href="teste3/cdcatalog2.xml"> cdcatalog com link para transformação </a> </p>
+
+<img src="teste3/Captura%20de%20tela%20de%202021-01-06%2014-11-42.png"  width=960 height=540 />
+
+<h2 id="teste4"> Teste 4 </h2>
+
+<p> Objetivo: Definir qual o arquivo de transformação mínimo para começar a criar (escrever) uma transformação.</p>
+
+<p> O arquivo contendo só a primeira linha resulta em erro. </p>
+
+<img src="teste4/Captura%20de%20tela%20de%202021-01-06%2014-20-26.png"  width=960 height=540 />
+
+<p> O arquivo contendo os blocos `stylesheet`, `template`, `html` e `body`, com `body` vazio resulta em não erro e em arquivo transformado vazio. </p>
+
+<img src="teste4/Captura%20de%20tela%20de%202021-01-06%2014-19-28.png"  width=960 height=540 />
+
+<p> O arquivo contendo os blocos `stylesheet`, `template`, `html` e `body`, com `body` com tags, como uma página estática. A transformação definida elimina o conteúdo do arquivo a transformar e apresenta os tags (estáticos) definidos. </p>
+
+<img src="teste4/Captura%20de%20tela%20de%202021-01-06%2014-18-25.png"  width=960 height=540 />
+
+<p> Este último me parece a melhor das três pois dá sinal visível que renderiza, mas transforma de algo para nada, o que gera uma certa confusão/insegurança. Uma transformação identidade acrescida de um tag poderia ser um ponto de partida conveniente. </p>
+
+<p> <a href="teste4/cdcatalog.xml"> cdcatalog original </a> </p>
+<p> <a href="teste4/cdcatalog.xsl"> definição da transformação </a> </p>
+<p> <a href="teste4/cdcatalog2.xml"> cdcatalog com link para transformação </a> </p>
+
+<h2 id="teste5"> Teste 5 </h2>
+
+<p> Objetivo: Apresentar uma transformação identidade, explicar, apresentar as referências.</p>
+
+<p> <a href="teste5/cdcatalog.xml"> cdcatalog original </a> </p>
+<p> <a href="teste5/cdcatalog.xsl"> definição da transformação </a> </p>
+<p> <a href="teste5/cdcatalog2.xml"> cdcatalog com link para transformação </a> </p>
+
+<img src="teste5/Captura%20de%20tela%20de%202021-01-06%2015-24-11.png"  width=960 height=540 />
+
+<h3 id=explica>Explicação</h3>
+
+<p>Ainda sem explicações</p>
+
+<h2 id="teste6"> Teste 6 </h2>
+
+<p> Objetivo: Percorrer a árvore, escrever a IRI do nó, explicar, apresentar as referências.</p>
+
+<p> <a href="teste6/cdcatalog.xml"> cdcatalog original </a> </p>
+<p> <a href="teste6/cdcatalog.xsl"> definição da transformação </a> </p>
+<p> <a href="teste6/cdcatalog2.xml"> cdcatalog com link para transformação </a> </p>
+
+<p>Não consegui fazer funcionar sobre cdcatalog. </p>
+
+<img src="teste6/Captura%20de%20tela%20de%202021-01-08%2015-07-18.png"  width=960 height=540 />
+
+
+<h3 id=explica>Explicação</h3>
+
+<p>Ainda sem explicações</p>
+
+<p><a href="https://stackoverflow.com/questions/953197/how-do-you-output-the-current-element-path-in-xslt/10112579">Referência</a></p>
+
+<p>Não consegui fazer funcionar sobre o conteúdo da referência. </p>
+
+<p> <a href="teste6/cdcatalog.xsl"> definição da transformação </a> </p>
+<p> <a href="teste6/conteudo2.xml"> conteúdo da referência com link para transformação </a> </p>
+
+<img src="teste6/Captura%20de%20tela%20de%202021-01-08%2015-00-30.png"  width=960 height=540 />
+
+<h3 id=analise>Análise</h3>
+
+<p>A transformação é semelhante à identidade (teste 5). Parece que `xsl:copy` está copiando pois o arquivo transformado é igual ao arquivo transformado de teste 5. No conteúdo da referência, não há nó de texto, logo, faz sentido que não apareça nada. A comparação dos exemplos da referência me faz acreditar que falta a instrução de processamento que escreve o caminho na saída. Algo como `<xsl:text>caminho</xsl:text>` </p>
+
+<h2 id="teste7"> Teste 7 </h2>
+
+<p> Objetivo: Modificar a transformação identidade para imprimir algo, explicar, apresentar as referências.</p>
+
+<p> <a href="teste7/cdcatalog.xml"> cdcatalog original </a> </p>
+<p> <a href="teste7/cdcatalog.xsl"> definição da transformação </a> </p>
+<p> <a href="teste7/cdcatalog2.xml"> cdcatalog com link para transformação </a> </p>
+
+<img src="teste7/Captura%20de%20tela%20de%202021-01-08%2019-46-37.png"  width=960 height=540 />
+
+<h3 id=explica>Explicação</h3>
+
+<p>Na transformação, inseri um parágrafo HTML, deu erro.</p>
+
+<h2 id="teste8"> Teste 8 </h2>
+
+<p> Objetivo: Modificar a transformação identidade para imprimir algo usando `xsl:text`, explicar, apresentar as referências.</p>
+
+<p> <a href="teste8/cdcatalog.xml"> cdcatalog original </a> </p>
+<p> <a href="teste8/cdcatalog.xsl"> definição da transformação </a> </p>
+<p> <a href="teste8/cdcatalog2.xml"> cdcatalog com link para transformação </a> </p>
+
+<img src="teste8/Captura%20de%20tela%20de%202021-01-08%2019-47-21.png"  width=960 height=540 />
+
+<h3 id=explica>Explicação</h3>
+
+<p>com `xsl:text` imprimiu.</p>
+
+<h2 id="teste9"> Teste 9 </h2>
+
+<p> Objetivo: Modificar a transformação identidade para imprimir algo, explicar, apresentar as referências.</p>
+
+<p> <a href="teste9/cdcatalog.xml"> cdcatalog original </a> </p>
+<p> <a href="teste9/cdcatalog.xsl"> definição da transformação </a> </p>
+<p> <a href="teste9/cdcatalog2.xml"> cdcatalog com link para transformação </a> </p>
+
+<img src="teste9/Captura%20de%20tela%20de%202021-01-08%2020-38-12.png"  width=960 height=540 />
+
+<h3 id=explica>Explicação</h3>
+
+
+&gt; The &lt;xsl:value-of&gt; element extracts the value of a selected node.
+
+<p>Acho que extract e write significam quase a mesma coisa: nos dois casos, escreve na saída. Em <a href="https://www.w3schools.com/xml/ref_xsl_el_value-of.asp">value-of usa extract</a>, em <a href="https://www.w3schools.com/xml/ref_xsl_el_text.asp">text usa write</a>. Porém há um nível de indireção em value-of, então na explicação de value-of, <b>extrair e escrever</b> seria mais preciso que somente extrair.</p>
+<p>`name(.) é uma função de XPATH que retorna o nome do tag` </p>
+<p>Imprimir em pré-ordem faz mais sentido (para mim) que imprimir em pós-ordem. </p>
+<p><a href="https://www.w3schools.com/xml/xsl_functions.asp">Lista de funções XPATH</a></p>
+
+<p> a saída faz mais sentido se imprimir preordem. xsl:value-of imprime, não precisa, nem pode, estar dentro de xsl:text </p>
+
+<p> Acho que não existe função que retorne o caminho completo, precisa montar. </p>
+
+<p> Depois de passar os olhos em todas as funções, entendi no código da referência que copiei no teste 6, que monta-se o caminho concatenando os nomes. Ainda não estou confortável com o que entendo sobre a chamada de templates. Sei que template declara e call-template e apply-template chamam. Em especial as expressões usadas em select e em match, diferença entre xls:variable e xls:param, em especial por que apply-template pode ter select e template pode ter match simultaneamente: parece ser redundante. (2021-01-09-102300).</p>
+
+<p>Chamarei <em>especulação</em> uma argumentação que escrevi e que não está (completamente) em nenhuma referência. Às vezes, partes da argumentação necessitam referências também, às vezes eu as conheço e cito, mas isto não deve ser interpretado como se toda a argumentação esteja nessa referência, ou no conjunto.</p>
+
+<p><a id="especula"><b>especulação</b></a>: Começa intepretando, a partir da primeira linha, sequencialmente, o arquivo que retorna da requisição. No caso do arquivo ser um XML, a primeira linha do arquivo informa que o tipo é esse; Na linha que encontra o xml-stylesheet, carrega a transformação (XSLT); A carga consiste em: ler o XSLT, a partir da primeira linha, sequencialmente, ajustando configurações e registrando templates (vou supor que há uma tabela de templates, análoga a uma tabela de símbolos) do processador XSL. Encerrada a carga, executa o processador XSL, que aplica a transformação sobre o restante do XML. <b>nota</b>: escrever permite encontrar elementos faltantes na interpretação/argumentação - reescrevi este parágrafo algumas vezes, até a argumentação ter todas as premissas e argumentos que acredito necessários.</p>
+
+
+<h3 id=teste-especula>Teste exploratório</h3>
+
+Objetivo: Saber qual versão de XSLT meu navegador suporta.
+
+Contexto:  O tutorial da w3school contempla a versão 1.0. <a href="https://www.w3.org/TR/2017/REC-xslt-30-20170608/">A recomendação da w3c</a> é bem mais detalhada, mas parece não ter nem exemplos nem tutoriais. 
+
+Relevância: Permite que eu possa ler somente a documentação da versão 3.0. Esta versão deve ter mais funcionalidades que a versão 1.0. Também não precisarei ocupar-me com funcionalidades não suportadas.
+
+Método: trocar version="1.0" por version="3.0" no arquivo de transformação copiado do teste9.
+
+Resultado: executou sem erros.
+
+<p> <a href="teste10/cdcatalog.xml"> cdcatalog original </a> </p>
+<p> <a href="teste10/cdcatalog.xsl"> definição da transformação </a> </p>
+<p> <a href="teste10/cdcatalog2.xml"> cdcatalog com link para transformação </a> </p>
+
+<img src="teste10/Captura%20de%20tela%20de%202021-01-09%2015-36-24.png"  width=960 height=540 />
+
+<h3 id=leituraVer3.0>Leitura da recomendação versão 3.0 da w3c</h3>
+
+
+<a href="https://github.com/w3c/xslt30-test/">Repositório com 11k testes de XSLT3.0</a>
+
+<p>A <a href="#especula">especulação</a>, em linhas gerais, está certa. <a href="https://www.w3.org/TR/2017/REC-xslt-30-20170608/#initiating">Referência W3C</a><b></b></p>
+
+<p><a href="https://www.w3.org/TR/2017/REC-xslt-30-20170608/#rule-based-processing">Esta referência</a> explica detalhadamente como os templates são aplicados. O que vi de importante é que para cada elemento na árvore de entrada, apenas um template, o que <em>melhor se ajustar</em>, é aplicado. Há uma regra de precedência: na sequência de templates do arquivo de transformação, um template têm maior prioridade que os templates seguintes, então, pode-se dizer que usa o que ajustar primeiro, em ordem sequencial.<b></b></p>
+
+<p>Expressões dentro de chaves são avaliadas como attribute value template<b></b></p>
+
+
+<p><a href="https://www.w3.org/TR/2017/REC-xslt-30-20170608/#built-in-templates-shallow-copy">Esta referência</a> é uma seção da recomendação w3c que apresenta uma transformação usualmente qualificada como identidade, mas que não preserva as identidades dos nós. Este era meu incômodo com o teste 5, que eu não sabia direito o que estava acontecendo, consequentemente não conseguia expressar.</p>
+
+<p><a href="https://www.w3.org/TR/2017/REC-xslt-30-20170608/#parameters-to-template-rules">Nesta referência</a> inicia a explicação sobre passar parâmetros para templates.<b></b></p>
+
+<p><a href="https://www.w3.org/TR/2017/REC-xslt-30-20170608/#variables-and-parameters">Esta seção</a> explica variáveis e parâmetros, inclusive sobre escopo. Eu mencionei minha confusão. Esqueci que variáveis e parâmetros são diferentes e que não é usual usar variáveis para passar valores para dentro de templates (funções) e que ficar criando parâmetros para usar como variáveis é ainda menos usual. A confusão sobre parâmetros e variáveis se desfez.<b></b></p>
+
+<p>Próximo passo: escrever o caminho.<b></b></p>
+
+
+<a href=""></a>
+<a id=""></a>
+
+
+
+<p><a href=""></a><b></b></p>
+
+<p><b></b></p>
+
+<h3 id=referencias>Referências</h3>
+
+<p><a href="http://www.usingxml.com/Transforms/XslIdentity"> Referência externa </a></p>
+
+<h2 id="notas"> Anotações </h2>
+
+<h3 id="2021-01-06-112011"> 2021-01-06-112025 </h2>
+
+<p> <em> Tinha esquecido o que eu sinto quando escrevo HTML na mão.... </em> </p>
+
+<h3 id="2021-01-08-143400"> 2021-01-08-143400 </h2>
+
+<p> Ainda não sou capaz de entender o que há em teste6. </p>
+
+</body>
+
