@@ -34,6 +34,10 @@ O uso nessa transformação foi objeto de análise por um grupo da W3C. [Wiki da
 
 ### 2
 
+Na elaboração dos [testes](#4) vi que existe um [repositório do github com mais de 11mil testes de XSLT](https://github.com/w3c/xslt30-test/). 
+
+### 3
+
 XSLT usa XPATH.
 
 
@@ -175,15 +179,64 @@ case
 with-param 	Defines the value of a parameter to be passed into a template
 passagem de parâmetro em chamada de procedimento.
 
-### 3
+### 4
 
-São dez testes ao todo, acessados por [Testes e resultados](xslt/index.html) (para executar, copiar a pasta para dentro da pasta webapp de Fuseki e acessar o conteúdo com o navegador). Abaixo um resumo:
+São catorze testes ao todo, acessados por [Testes e resultados](xslt/index.html) (para executar, copiar a pasta para dentro da pasta webapp de Fuseki e acessar o conteúdo com o navegador). Abaixo um resumo:
 
-Teste 1: o do primeiro tutorial da W3Schools. [Fonte: W3S](https://www.w3schools.com/xml/xsl_intro.asp)
-Teste 5: transformação 'identidade'.[Fonte: stackoverflow](https://stackoverflow.com/questions/953197/how-do-you-output-the-current-element-path-in-xslt/10112579)
-Teste 10: Teste superficial de suporte do navegador para migrar para XSLT versão 3.0, que tem mais funcionalidades que a versão 1.0. [Recomendação XLST versão 3.0: Fonte: W3C](https://www.w3.org/TR/2017/REC-xslt-30-20170608/).
+- Teste 1: o do primeiro tutorial da W3Schools. [Fonte: W3S](https://www.w3schools.com/xml/xsl_intro.asp)
+- Teste 5: transformação 'identidade'.[Fonte: stackoverflow](https://stackoverflow.com/questions/953197/how-do-you-output-the-current-element-path-in-xslt/10112579)
+- Teste 10: Teste superficial de suporte do navegador para migrar para XSLT versão 3.0, que tem mais funcionalidades que a versão 1.0. [Recomendação XLST versão 3.0: Fonte: W3C](https://www.w3.org/TR/2017/REC-xslt-30-20170608/).
+- Teste 14: Percorre a árvore XML, escrevendo na saída o caminho descendente até o nó corrente.
 
-Os outros testes são passos incrementais dos citados no resumo.
+Os outros testes, intermediários, são passos incrementais dos citados no resumo.
+
+**nota**: não fiquei muito satisfeito em deixar uma parte da documentação aqui e outra no index.html dentro da pasta xslt.
+
+### Variáveis
+
+Em XSLT, que é dita uma linguagem funcional, variáveis funcionam ligeiramente diferente de C, Java, ...
+
+Uma das diferenças é que variáveis são imutáveis: seu valor é atribuído na criação e uma vez criada, seu valor não muda. Referências listadas abaixo:
+
+- https://stackoverflow.com/questions/19255139/how-to-change-or-reassign-a-variable-in-xslt
+- https://stackoverflow.com/questions/36504/why-functional-languages
+- https://stackoverflow.com/questions/833118/in-xslt-how-do-i-increment-a-global-variable-from-a-different-scope
+- https://stackoverflow.com/questions/3344965/increment-a-value-in-xslt
+
+Isto torna muito mais atraente o uso de parâmetros de funções. Reorganizar o código em função deste mecanismo é sempre possível.
+
+### Templates (funções)
+
+Declarar: https://www.w3schools.com/xml/ref_xsl_el_template.asp
+
+Aplicar (executar, chamar, invocar): https://www.w3schools.com/xml/ref_xsl_el_apply-templates.asp, https://www.w3schools.com/xml/ref_xsl_el_call-template.asp
+
+
+### Parâmetros
+
+https://www.w3schools.com/xml/ref_xsl_el_with-param.asp
+https://www.w3schools.com/xml/ref_xsl_el_param.asp
+
+
+### Listas, conjuntos, sequências
+
+São úteis para indexar, armazenar e recuperar informação (por exemplo nós em grafos). Em transformações deste tipo, é útil ter algo que sirva como uma tabela de símbolos (terminologia de construção de compiladores). Acredito que estas estruturas e as funções associadas sejam úteis para isso. 
+
+#### Attribute set (são conjuntos de atributos)
+
+https://www.w3schools.com/xml/ref_xsl_el_attributeset.asp
+
+#### Sequências (são value-of)
+
+https://www.w3schools.com/xml/xsl_functions.asp#sequence
+https://www.google.com/search?channel=fs&client=ubuntu&q=xslt+sequence
+https://stackoverflow.com/questions/14871051/how-to-declare-a-sequence-in-xslt
+
+#### Listas com chave (chave é algum XML:atributo)
+
+https://www.tutorialspoint.com/xslt/xslt_key.htm
+https://www.w3schools.com/xml/func_key.asp
+https://www.w3schools.com/xml/ref_xsl_el_key.asp
 
 ## Discussão 
 
@@ -210,5 +263,6 @@ https://stackoverflow.com/questions/3669407/convert-xsd-to-rdf-schema
 https://rhizomik.net/redefer
 https://www.google.com/search?channel=fs&client=ubuntu&q=xs2owl
 https://www.researchgate.net/publication/221038830_XS2OWL_A_Formal_Model_and_a_System_for_Enabling_XML_Schema_Applications_to_Interoperate_with_OWL-DL_Domain_Knowledge_and_Semantic_Web_Tools
+http://www2.ic.uff.br/~vanessa/material/gdse/09-XSLT.pdf
 
 

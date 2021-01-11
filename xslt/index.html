@@ -48,7 +48,7 @@ UBUNTU_CODENAME=focal
 <p>Transformação-identidade: transformação que apresenta como saída o mesmo que recebeu como entrada. <b>Nota</b>: <em>o mesmo</em> pode ter interpretações e implementações diferentes.</p>
 
 
-<h2 id="teste1"> Teste 1 </h2>
+<h2 id="teste-1"> Teste 1 </h2>
 
 
 <p> <a href="teste1/cdcatalog.xml"> cdcatalog original </a> </p> 
@@ -202,17 +202,17 @@ UBUNTU_CODENAME=focal
 <p><a id="especula"><b>especulação</b></a>: Começa intepretando, a partir da primeira linha, sequencialmente, o arquivo que retorna da requisição. No caso do arquivo ser um XML, a primeira linha do arquivo informa que o tipo é esse; Na linha que encontra o xml-stylesheet, carrega a transformação (XSLT); A carga consiste em: ler o XSLT, a partir da primeira linha, sequencialmente, ajustando configurações e registrando templates (vou supor que há uma tabela de templates, análoga a uma tabela de símbolos) do processador XSL. Encerrada a carga, executa o processador XSL, que aplica a transformação sobre o restante do XML. <b>nota</b>: escrever permite encontrar elementos faltantes na interpretação/argumentação - reescrevi este parágrafo algumas vezes, até a argumentação ter todas as premissas e argumentos que acredito necessários.</p>
 
 
-<h3 id=teste-especula>Teste exploratório</h3>
+<h3 id=teste-especula>Teste exploratórios</h3>
 
-Objetivo: Saber qual versão de XSLT meu navegador suporta.
+<p>Objetivo: Saber qual versão de XSLT meu navegador suporta.
 
-Contexto:  O tutorial da w3school contempla a versão 1.0. <a href="https://www.w3.org/TR/2017/REC-xslt-30-20170608/">A recomendação da w3c</a> é bem mais detalhada, mas parece não ter nem exemplos nem tutoriais. 
+<p>Contexto:  O tutorial da w3school contempla a versão 1.0. <a href="https://www.w3.org/TR/2017/REC-xslt-30-20170608/">A recomendação da w3c</a> é bem mais detalhada, mas parece não ter nem exemplos nem tutoriais. 
 
-Relevância: Permite que eu possa ler somente a documentação da versão 3.0. Esta versão deve ter mais funcionalidades que a versão 1.0. Também não precisarei ocupar-me com funcionalidades não suportadas.
+<p>Relevância: Permite que eu possa ler somente a documentação da versão 3.0. Esta versão deve ter mais funcionalidades que a versão 1.0. Também não precisarei ocupar-me com funcionalidades não suportadas.
 
-Método: trocar version="1.0" por version="3.0" no arquivo de transformação copiado do teste9.
+<p>Método: trocar version="1.0" por version="3.0" no arquivo de transformação copiado do teste9.
 
-Resultado: executou sem erros.
+<p>Resultado: executou sem erros.
 
 <p> <a href="teste10/cdcatalog.xml"> cdcatalog original </a> </p>
 <p> <a href="teste10/cdcatalog.xsl"> definição da transformação </a> </p>
@@ -223,11 +223,11 @@ Resultado: executou sem erros.
 <h3 id=leituraVer3.0>Leitura da recomendação versão 3.0 da w3c</h3>
 
 
-<a href="https://github.com/w3c/xslt30-test/">Repositório com 11k testes de XSLT3.0</a>
+<p><a href="https://github.com/w3c/xslt30-test/">Repositório com 11k testes de XSLT3.0</a>
 
 <p>A <a href="#especula">especulação</a>, em linhas gerais, está certa. <a href="https://www.w3.org/TR/2017/REC-xslt-30-20170608/#initiating">Referência W3C</a><b></b></p>
 
-<p><a href="https://www.w3.org/TR/2017/REC-xslt-30-20170608/#rule-based-processing">Esta referência</a> explica detalhadamente como os templates são aplicados. O que vi de importante é que para cada elemento na árvore de entrada, apenas um template, o que <em>melhor se ajustar</em>, é aplicado. Há uma regra de precedência: na sequência de templates do arquivo de transformação, um template têm maior prioridade que os templates seguintes, então, pode-se dizer que usa o que ajustar primeiro, em ordem sequencial.<b></b></p>
+<p><a href="https://www.w3.org/TR/2017/REC-xslt-30-20170608/#rule-based-processing">Esta referência</a> explica detalhadamente como os templates são aplicados. O que vi de importante é que para cada elemento na árvore de entrada, apenas um template, o que <em>melhor se ajustar</em>, é aplicado. Há uma regra de precedência: na sequência de templates do arquivo de transformação, um template tem maior prioridade que os templates seguintes, então, pode-se dizer que usa o que ajustar primeiro, em ordem sequencial.<em>Escrevi <a href="#teste11">Teste 11</a> para testar isso - se o teste estiver certo, ff68 não segue a recomendação.</em></p>
 
 <p>Expressões dentro de chaves são avaliadas como attribute value template<b></b></p>
 
@@ -239,6 +239,89 @@ Resultado: executou sem erros.
 <p><a href="https://www.w3.org/TR/2017/REC-xslt-30-20170608/#variables-and-parameters">Esta seção</a> explica variáveis e parâmetros, inclusive sobre escopo. Eu mencionei minha confusão. Esqueci que variáveis e parâmetros são diferentes e que não é usual usar variáveis para passar valores para dentro de templates (funções) e que ficar criando parâmetros para usar como variáveis é ainda menos usual. A confusão sobre parâmetros e variáveis se desfez.<b></b></p>
 
 <p>Próximo passo: escrever o caminho.<b></b></p>
+
+
+
+
+
+
+
+
+
+
+<h3 id=teste11>Teste 11</h3>
+
+<p>Objetivo: Checar, no sistema de desenvolvimento, a precedência de aplicação de templates que está na especificação.</p>
+
+<p>Contexto: <a href="https://www.w3.org/TR/2017/REC-xslt-30-20170608/#rule-based-processing">Esta referência</a> menciona que pode haver mais de um template aplicável a cada nó e que, nesse caso, o *best-fit template* é usado.</p>
+
+<p>Relevância: Isto é útil para uma estratégia de desenvolvimento de código em que o template de prioridade mais baixa ajusta 'qualquer padrão' e templates de prioridade mais alta são desenvolvidos incrementalmente para ajustar 'padrões específicos'. Com um conjunto de testes que cubra todos os padrões possíveis, ao final do processo incremental, todos os padrões são tratados. Se surgir um padrão novo, ele é facilmente identificável e o código que o trata pode ser acrescentado.</p>
+
+<p>Método: Criar dois templates que se ajustam a conjuntos de padrões com intersecção não vazia.</p>
+
+<p>Resultado: Não usou nenhuma das regras, esperava-se que usasse a primeira regra. A transformação contém dois templates. Ambos se ajustam a um elemento tipo documento: `/`. Se o primeiro template for usado, a saída é uma tabela contendo o catálogo. Se o segundo for usado, a saída é a 'identidade' acrescida do nome do nó em um elemento `p` (no <a href="#teste12">Teste 12</a> mostra-se que a construção cria parágrafos, o que não aconteceu neste teste). O resultado foi a identidade acrescida do nome do nó. As regras podem ser vistas na definição da transformação.</p>
+
+<p>Tanto o servidor quando o cliente fazem cache de páginas. Quando os arquivos são modificados no servidor, carregar o arquivo modificado pode necessitar reiniciar o cliente e o servidor. </p>
+
+<p> <a href="teste11/cdcatalog.xml"> cdcatalog original </a> </p>
+<p> <a href="teste11/cdcatalog.xsl"> definição da transformação </a> </p>
+<p> <a href="teste11/cdcatalog2.xml"> cdcatalog com link para transformação </a> </p>
+
+<img src="teste11/Captura%20de%20tela%20de%202021-01-11%2016-12-32.png"  width=960 height=540 />
+
+<h3 id=teste12>Teste 12</h3>
+
+<p>Objetivo: Verificar que a regra inclui um parágrafo, verificar o uso de &lt;xsl:element&gt;.</p>
+
+<p>Contexto: Fiquei em dúvida se no <a href="#teste11">Teste 11</a> realmente inseri um parágrafo. </p>
+
+<p>Relevância: Validar o resultado do Teste 11.</p>
+
+<p>Método: Ajustar os templates para padrões sem intersecção, com código mínimo para testar &lt;xsl:element&gt;.</p>
+
+<p>Resultado: executou sem erros. O resultado do teste 11 está validado: não usou nenhuma das regras.</p>
+
+<p> <a href="teste12/cdcatalog.xml"> cdcatalog original </a> </p>
+<p> <a href="teste12/cdcatalog.xsl"> definição da transformação </a> </p>
+<p> <a href="teste12/cdcatalog2.xml"> cdcatalog com link para transformação </a> </p>
+
+<img src="teste12/Captura%20de%20tela%20de%202021-01-11%2016-31-28.png"  width=960 height=540 />
+
+<h3 id=teste13>Teste 13</h3>
+
+<p>Objetivo: Apresentar nível na árvore usando ou variável global ou parâmetro. Usa funções sobre strings.</p>
+
+<p>Contexto:  </p>
+
+<p>Relevância: Importante para completar a compreensão do teste 6.</p>
+
+<p>Método: Incorporar uma variável global ou um parâmetro que codifique o nível na árvore, imprimir o valor da variável.</p>
+
+<p>Resultado: No momento da construção do teste, eu não sabia que variáveis e parâmetros eram imutáveis, o que aprendi na pesquisa para realização do teste. Dado que são imutáveis, pareceu mais conveniente usar parâmetros. Ainda não entendi por quê imprime o nível duas vezes, uma sem nome e outra com nome. (consegui entender no teste 14, mas ainda não validei.)</p>
+
+<p> <a href="teste13/cdcatalog.xml"> cdcatalog original </a> </p>
+<p> <a href="teste13/cdcatalog.xsl"> definição da transformação </a> </p>
+<p> <a href="teste13/cdcatalog2.xml"> cdcatalog com link para transformação </a> </p>
+
+<img src="teste13/Captura%20de%20tela%20de%202021-01-11%2016-43-50.png"  width=960 height=540 />
+
+<h3 id=teste14>Teste 14</h3>
+
+<p>Objetivo: Escrever o caminho até o nó corrente.</p>
+
+<p>Contexto: </p>
+
+<p>Relevância: Importante para completar a compreensão do teste 6.</p>
+
+<p>Método: concatenar o nome().</p>
+
+<p>Resultado: executou sem erros. Os caminhos são duplicados porque depois de executar a inclusão o elemento com xsl:element, faz uma cópia do nó corrente para a saída com xsl:copy.</p>
+
+<p> <a href="teste14/cdcatalog.xml"> cdcatalog original </a> </p>
+<p> <a href="teste14/cdcatalog.xsl"> definição da transformação </a> </p>
+<p> <a href="teste14/cdcatalog2.xml"> cdcatalog com link para transformação </a> </p>
+
+<img src="teste14/Captura%20de%20tela%20de%202021-01-11%2016-55-31.png"  width=960 height=540 />
 
 
 <a href=""></a>
