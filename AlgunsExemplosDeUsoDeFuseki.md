@@ -177,7 +177,7 @@ Error 404: Not Found
 
 **nota**: composição de [Fazer uma consulta SPARQL UPDATE usando curl e POST](#Fazer-uma-consulta-SPARQL-UPDATE-usando-curl-e-POST) com a [especulação sobre POST](#especula)
 
-1. [Ler RDF](FusekiTutoriais.md#Ler-RDF) para carregar alguma informação;
+1. [Ler RDF](#ler-rdf) para carregar alguma informação;
 2. Abrir um novo terminal e executar ~~`curl -X POST -d "query= PREFIX dc: <http://purl.org/dc/elements/1.1/> INSERT DATA { <http://example/book1> dc:title "A new book" ; dc:creator "A.N.Other" . } " localhost:3030/mydataset/update`~~ `curl -X POST -d 'update= PREFIX dc: <http://purl.org/dc/elements/1.1/> INSERT DATA { <http://example/book1> dc:title "A new book" ; dc:creator "A.N.Other" . } ' localhost:3030/mydataset/update`
 3. Ver o resultado (abaixo)
 
@@ -210,6 +210,34 @@ Update succeeded
 [tela com mensagens nos terminais](Imagens/Captura%20de%20tela%20de%202020-12-28%2019-11-23.png)
 
 [tela de edição do dataset com as triplas inseridas](Imagens/Captura%20de%20tela%20de%202020-12-28%2019-13-04.png)
+
+### Carregar uma ontologia com uma consulta SPARQL LOAD usando curl e POST
+
+1. Na interface de controle do servidor Fuseki, criar um novo dataset. Neste exemplo chama-se `MeuSSN`.
+2. Abrir um novo terminal e executar `curl -X POST -d 'update= LOAD <http://purl.org/dc/elements/1.1/>  ' localhost:3030/MeuSSN/update`
+3. Ver o resultado (abaixo)
+
+
+
+Terminal em que executei curl:
+<pre><font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/git/Gestao</b></font>$ curl -X POST -d &apos;update= LOAD &lt;http://purl.org/dc/elements/1.1/&gt;  &apos; localhost:3030/MeuSSN/update
+&lt;html&gt;
+&lt;head&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;Success&lt;/h1&gt;
+&lt;p&gt;
+Update succeeded
+&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+
+[tela de edição do dataset com as triplas inseridas](Imagens/Captura%20de%20tela%20de%202021-01-14%2019-46-24.png)
+
+#### Comentário
+
+Tentei fazer esta operação pela interface web do Fuseki. Obtive *bad request* como resposta. Este comportamento é semelhante ao que ocorreu com UPDATE. Creio que consultas que modificam os grafos de conhecimento foram restritas a usar o método POST e nó update.
 
 ### Usar a instalação de Fuseki para servir páginas HTML.
 
