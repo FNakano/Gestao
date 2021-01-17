@@ -220,7 +220,7 @@ https://www.w3schools.com/xml/ref_xsl_el_param.asp
 
 ### Listas, conjuntos, sequências
 
-São úteis para indexar, armazenar e recuperar informação (por exemplo nós em grafos). Em transformações deste tipo, é útil ter algo que sirva como uma tabela de símbolos (terminologia de construção de compiladores). Acredito que estas estruturas e as funções associadas sejam úteis para isso. 
+São úteis para indexar, armazenar e recuperar informação (por exemplo nós em grafos). Em transformações deste tipo, é útil ter algo que sirva como uma tabela de símbolos (terminologia de construção de compiladores). Estas estruturas e as funções associadas podem ser usadas para isso. 
 
 #### Attribute set (são conjuntos de atributos)
 
@@ -237,6 +237,15 @@ https://stackoverflow.com/questions/14871051/how-to-declare-a-sequence-in-xslt
 https://www.tutorialspoint.com/xslt/xslt_key.htm
 https://www.w3schools.com/xml/func_key.asp
 https://www.w3schools.com/xml/ref_xsl_el_key.asp
+
+### Teste de Saxon
+
+Testei Saxon com um gerador de grafos aleatórios (`gnl.xsl`), conforme <http://graphml.graphdrawing.org/download.html>. Acredito que seja um bom exemplo de uso de transformações e da linguagem XSLT (por exemplo, mostra como ler argumentos de linha de comando), mas fiquei frustrado pois a versão gratuita não tem funcionalidade suficiente.
+
+![alt text](Imagens/Captura%20de%20tela%20de%202021-01-17%2016-20-09.png)
+
+Teste Saxon com [graphml2rdf](ttps://github.com/cui-ke/graphml2rdf), que usei [aqui](bid-graphML-RDF.md#exemplo).
+
 
 ## Discussão 
 

@@ -78,6 +78,10 @@ Talvez, prefixar os domínios, como feito em XML e em RDF, diminua a confusão. 
 
 [Usando XSLT](UsandoXSLT.md) - inicial
 
+[sobre graphML](graphML.md) - inicial - informativo
+
+[conversor bidirecional graphML - RDF](bid-graphml-RDF.md) - inicial - proposta de projeto
+
 [Exemplos de uso de Fuseki - precedem 'os mesmos tutoriais com Fuseki'](AlgunsExemplosDeUsoDeFuseki.md)
 
 [Os mesmos tutoriais com Fuseki](FusekiTutoriais.md) - inicial
