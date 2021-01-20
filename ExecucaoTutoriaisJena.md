@@ -48,7 +48,7 @@ Tutorial01.java:40: error: cannot find symbol
 6 errors
 <font color="#859900"><b>fabio@fabio-13Z940-G-BK7</b></font></pre>
 
-comando para compilação que funcionou: `javac -cp '/home/fabio/apache-jena-3.17.0/lib/*'  Tutorial01.java`
+comando para compilação que funcionou: `javac -cp '/home/fabio/apache-jena-3.17.0/lib/*'  Tutorial01.java` **mas falha para executar** veja os comandos [aqui](ExecucaoTutoriaisJena.md#comandos-para-compilar-e-executar).
 
 Como cheguei a esse comando: Achei esta referência:<https://info.sice.indiana.edu/~dingying/Teaching/Z636/Slides/InstallJena.txt>
 
@@ -113,6 +113,8 @@ Minha mensagem.
 <font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sobreJena/programas/Tutorial1</b></font>$  
 
 </pre>
+
+### Comandos para compilar e executar
 
 Minha interpretação: quando uso `-cp`, informo para procurar as classes em algum diretório. Como informei, sobrescrevo a informação do classpath padrão para a execução. Padrão que acredito que seja *buscar no diretório corrente*. Caso eu não inclua o diretório corrente no classpath, a máquina virtual não busca no diretório corrente, que é onde está a classe que acabei de compilar. Isto gera um `class not found` para a classe que está na pasta corrente. Isto se corrige incluindo a pasta corrente no classpath. Acho que eu não preciso fazer isso para compilação quando tenho um arquivo só, mas acho que não causa erro se eu incluir na compilação também. Então os comandos de compilação e execução ficam:
 
