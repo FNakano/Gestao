@@ -80,6 +80,10 @@ Talvez, prefixar os domínios, como feito em XML e em RDF, diminua a confusão. 
 
 [sobre graphML](graphML.md) - inicial - informativo
 
+[Ontmalizer - Conversão de XML Schema para RDF:XML](Ontmalizer.md)
+
+[Raciocinadores e seu uso como validadores](Raciocinadores1.md)
+
 [conversor bidirecional graphML - RDF](bid-graphml-RDF.md) - inicial - proposta de projeto
 
 [Exemplos de uso de Fuseki - precedem 'os mesmos tutoriais com Fuseki'](AlgunsExemplosDeUsoDeFuseki.md)

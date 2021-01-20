@@ -32,6 +32,115 @@ Seguir a documentação até o validador e aplicar o validador em um exemplo em 
 
 ## Resultados
 
+### Minimo
+
+<pre><font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sobreJena/reasoner/minimo</b></font>$ javac -cp &apos;./:/home/fabio/apache-jena-3.17.0/lib/*&apos; ReasonerTutorial01.java 
+<font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sobreJena/reasoner/minimo</b></font>$ java -cp &apos;./:/home/fabio/apache-jena-3.17.0/lib/*&apos; ReasonerTutorial01
+Statement: [urn:x-hp-jena:eg/a, urn:x-hp-jena:eg/q, &quot;foo&quot;]
+<font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sobreJena/reasoner/minimo</b></font>$ 
+</pre>
+
+### Validador
+
+<pre><font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sobreJena/reasoner/validador1</b></font>$ javac -cp &apos;./:/home/fabio/apache-jena-3.17.0/lib/*&apos; Validador1.java 
+Validador1.java:12: error: cannot find symbol
+        Model data = RDFDataMgr.loadModel(inputFileName);
+                     ^
+  symbol:   variable RDFDataMgr
+  location: class Validador1
+Validador1.java:14: error: cannot find symbol
+        ValidityReport validity = infmodel.validate();
+        ^
+  symbol:   class ValidityReport
+  location: class Validador1
+Validador1.java:19: error: cannot find symbol
+            for (Iterator i = validity.getReports(); i.hasNext(); ) {
+                 ^
+  symbol:   class Iterator
+  location: class Validador1
+3 errors
+<font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sobreJena/reasoner/validador1</b></font>$ javac -cp &apos;./:/home/fabio/apache-jena-3.17.0/lib/*&apos; Validador1.java 
+Validador1.java:16: error: cannot find symbol
+        ValidityReport validity = infmodel.validate();
+        ^
+  symbol:   class ValidityReport
+  location: class Validador1
+Validador1.java:21: error: cannot find symbol
+            for (Iterator i = validity.getReports(); i.hasNext(); ) {
+                 ^
+  symbol:   class Iterator
+  location: class Validador1
+2 errors
+<font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sobreJena/reasoner/validador1</b></font>$ javac -cp &apos;./:/home/fabio/apache-jena-3.17.0/lib/*&apos; Validador1.java 
+Validador1.java:17: error: cannot find symbol
+        ValidityReport validity = infmodel.validate();
+        ^
+  symbol:   class ValidityReport
+  location: class Validador1
+Validador1.java:22: error: cannot find symbol
+            for (Iterator i = validity.getReports(); i.hasNext(); ) {
+                 ^
+  symbol:   class Iterator
+  location: class Validador1
+2 errors
+<font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sobreJena/reasoner/validador1</b></font>$ javac -cp &apos;./:/home/fabio/apache-jena-3.17.0/lib/*&apos; Validador1.java 
+Validador1.java:22: error: cannot find symbol
+            for (Iterator i = validity.getReports(); i.hasNext(); ) {
+                 ^
+  symbol:   class Iterator
+  location: class Validador1
+1 error
+<font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sobreJena/reasoner/validador1</b></font>$ javac -cp &apos;./:/home/fabio/apache-jena-3.17.0/lib/*&apos; Validador1.java 
+<font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sobreJena/reasoner/validador1</b></font>$  
+
+<font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sobreJena/reasoner/validador1</b></font>$ cp ../../vc-db-1.rdf .
+<font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sobreJena/reasoner/validador1</b></font>$ java -cp &apos;./:/home/fabio/apache-jena-3.17.0/lib/*&apos; Validador1
+OK
+<font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sobreJena/reasoner/validador1</b></font>$  
+
+</pre>
+
+### validador 2
+
+<pre><font color="#859900"><b>abio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sobreJena/reasoner</b></font>$ cp -r validador1 validador2
+<font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sobreJena/reasoner</b></font>$ cd validador2
+<font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sobreJena/reasoner/validador2</b></font>$ ls
+Validador1.class  Validador1.java  vc-db-1.rdf
+<font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sobreJena/reasoner/validador2</b></font>$ rm vc-db-1.rdf 
+<font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sobreJena/reasoner/validador2</b></font>$ cp ~/Documentos/ZZfiles/TesteOntmalizer/indoor*.owl .
+<font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sobreJena/reasoner/validador2</b></font>$ ls
+indoorgmlnavi.owl  indoorgml.owl  Validador1.class  Validador1.java
+<font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sobreJena/reasoner/validador2</b></font>$  
+</pre>
+
+https://jena.apache.org/documentation/inference/#validation
+https://jena.apache.org/documentation/ontology/index.html
+https://stackoverflow.com/questions/7779927/get-owl-restrictions-on-classes-using-jena
+https://stackoverflow.com/questions/29485572/import-pellet-reasoner-into-jena
+https://jena.apache.org/documentation/notes/model-factory.html
+https://www.google.com/search?channel=fs&client=ubuntu&q=w3c+definition+of+reasoner
+https://www.w3.org/standards/semanticweb/inference
+https://www.w3.org/OWL/
+https://www.google.com/search?client=ubuntu&hs=UqJ&channel=fs&sxsrf=ALeKk00RWj9WRoxtL1ZWbr3Awb9dhtOC6g%3A1611159859770&ei=M1kIYIbNLs_J5OUP39aM6A4&q=jena+reasoner+indiana&oq=jena+reasoner+indiana&gs_lcp=CgZwc3ktYWIQAzIFCCEQoAE6BAgjECc6BggAEAgQHjoECAAQHjoHCCMQsAIQJzoICAAQBxAeEBM6BggjECcQEzoGCAAQBxAeOgUIABDLAToGCAAQFhAeUN6ABVi7sAVg_rcFaABwAHgAgAH7AYgB8Q-SAQYwLjE0LjGYAQCgAQGqAQdnd3Mtd2l6wAEB&sclient=psy-ab&ved=0ahUKEwjGsviY9qruAhXPJLkGHV8rA-0Q4dUDCAw&uact=5
+https://www.google.com/search?channel=fs&client=ubuntu&q=info+sice+idiana
+https://github.com/FNakano/Gestao/blob/main/Raciocinadores1.md
+https://www.google.com/search?client=ubuntu&hs=b3M&channel=fs&sxsrf=ALeKk02zN_T1mjQlHdiPFp1kjtOj3qGAWg%3A1611172204652&ei=bIkIYNK0J5mz5OUPmPaRiAI&q=jena+api+validityreport&oq=jena+api+validityreport&gs_lcp=CgZwc3ktYWIQAzIHCCEQChCgATIHCCEQChCgATIHCCEQChCgAToECCMQJzoGCAAQFhAeOggIABAWEAoQHjoFCAAQywE6CAghEBYQHRAeOgUIIRCgAToECCEQFVDI1QRYhoIFYJeEBWgAcAB4AYABgwOIAaYdkgEIMC4yMC4xLjKYAQCgAQGqAQdnd3Mtd2l6wAEB&sclient=psy-ab&ved=0ahUKEwjSmriXpKvuAhWZGbkGHRh7BCEQ4dUDCAw&uact=5
+https://www.javatips.net/api/org.apache.jena.reasoner.validityreport.report
+https://jena.apache.org/documentation/javadoc/jena/org/apache/jena/rdf/model/InfModel.html
+https://jena.apache.org/documentation/javadoc/arq/org/apache/jena/riot/RDFDataMgr.html
+https://www.google.com/search?channel=fs&client=ubuntu&q=java+iterator+import
+https://www.w3schools.com/java/java_iterator.asp
+
+
+<pre><font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sobreJena/reasoner/validador2</b></font>$ javac -cp &apos;./:/home/fabio/apache-jena-3.17.0/lib/*&apos; Validador2.java 
+<font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sobreJena/reasoner/validador2</b></font>$ java -cp &apos;./:/home/fabio/apache-jena-3.17.0/lib/*&apos; Validador2 indoorgmlnavi.owl
+OK
+<font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sobreJena/reasoner/validador2</b></font>$ java -cp &apos;./:/home/fabio/apache-jena-3.17.0/lib/*&apos; Validador2 indoorgml.owl
+OK
+<font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sobreJena/reasoner/validador2</b></font>$  
+</pre>
+
+
 ## Discussão e Conclusão
 
 
