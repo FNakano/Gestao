@@ -1,6 +1,6 @@
 # Raciocinadores 1
 
-**estado**: incompleto
+**estado**: pode ser atualizado.
 
 ## Introdução
 
@@ -18,7 +18,7 @@ Parece-me que o objetivo da página é manter exemplos e códigos curtos, passar
 
 Os indicadores de sucesso (M) são:
 
-- Apresentar os códigos-fonte, comandos de compilação e execução e resultados de execução de todos os exemplos até o exemplo do validador;
+- Apresentar os códigos-fonte, comandos de compilação e execução e resultados de execução dos exemplos necessários até o exemplo do validador;
 - Apresentar o resultado da execução do validador sobre uma ontologia convertida;
 - Depositar o relatório (esta página), contendo esses resultados, no repositório.
 
@@ -34,13 +34,55 @@ Seguir a documentação até o validador e aplicar o validador em um exemplo em 
 
 ### Minimo
 
+O código-fonte inicial é:
+
+``` java
+
+// Fonte: https://info.sice.indiana.edu/~dingying/Teaching/Z636/Slides/JenaReasoner.ppt slide 14.
+
+import com.hp.hpl.jena.rdf.model.*;
+import com.hp.hpl.jena.vocabulary.*;
+import com.hp.hpl.jena.reasoner.*;
+
+public class reasonerTutorial01 {
+
+	private static String NS = "urn:x-hp-jena:eg/";
+	
+	public static void main(String args[]) {
+
+	// Build a trivial example data set
+	Model rdfsExample = ModelFactory.createDefaultModel();
+	Property p = rdfsExample.createProperty(NS, "p");
+	Property q = rdfsExample.createProperty(NS, "q");
+	rdfsExample.add(p, RDFS.subPropertyOf, q);
+	rdfsExample.createResource(NS+"a").addProperty(p, "foo");
+
+	InfModel inf = ModelFactory.createRDFSModel(rdfsExample); 
+
+	Resource a = inf.getResource(NS+"a");
+	System.out.println("Statement: " + a.getProperty(q));
+	}
+}
+```
+
+**Estratégia**: Por inspeção vi que os caminhos para as classes importadas são diferentes dos que uso. Por comparação com o [primeiro exemplo](Arquivos-ExecucaoTutoriasJena/Tutorial1/Tutorial01.java) da [execução dos tutoriais de Jena](ExecucaoTutoriaisJena.md), ajustei os caminhos. Após corrigir uns erros de sintaxe, compilou e executou sem erros, apresentando mensagem igual à do [tutorial sobre raciocinadores no site de Jena](https://jena.apache.org/documentation/inference/#generalExamples).
+
+
 <pre><font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sobreJena/reasoner/minimo</b></font>$ javac -cp &apos;./:/home/fabio/apache-jena-3.17.0/lib/*&apos; ReasonerTutorial01.java 
 <font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sobreJena/reasoner/minimo</b></font>$ java -cp &apos;./:/home/fabio/apache-jena-3.17.0/lib/*&apos; ReasonerTutorial01
 Statement: [urn:x-hp-jena:eg/a, urn:x-hp-jena:eg/q, &quot;foo&quot;]
 <font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sobreJena/reasoner/minimo</b></font>$ 
 </pre>
 
+Código-fonte: [ReasonerTutorial01.java](Arquivos-Raciocinadores1/minimo/ReasonerTutorial01.java)
+
+Comando para compilação: `javac -cp './:/home/fabio/apache-jena-3.17.0/lib/*' ReasonerTutorial01.java`
+
+Comando para execução: `java -cp './:/home/fabio/apache-jena-3.17.0/lib/*' ReasonerTutorial01`
+
 ### Validador
+
+**Estratégia**: a partir do código-fonte do [resultado mínimo](#minimo), acima, inseri o código do validador, no [quadro do tutorial sobre raciocinadores no site de Jena](https://jena.apache.org/documentation/inference/#validation). Supus que `fname` significa *file name*. Pelo nome do método, o arquivo deve conter um modelo, e pelo exemplo, deve ser um XML:RDF. Então copiei `vc-db-1.rdf` que é o modelo em RDF mais simples que me ocorreu. Ocorreram erros de compilação por não encontrar determinadas classes. Procurando no google, achei os pacotes em que as classes estão e incluí os `imports`. Incluí como comentários do código-fonte os links que resultaram em acerto.
 
 <pre><font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sobreJena/reasoner/validador1</b></font>$ javac -cp &apos;./:/home/fabio/apache-jena-3.17.0/lib/*&apos; Validador1.java 
 Validador1.java:12: error: cannot find symbol
@@ -100,7 +142,15 @@ OK
 
 </pre>
 
+Código-fonte: [Validador1.java](Arquivos-Raciocinadores1/validador1/Validador1.java)
+
+Comando para compilação: `javac -cp './:/home/fabio/apache-jena-3.17.0/lib/*' Validador1.java `
+
+Comando para execução: `java -cp './:/home/fabio/apache-jena-3.17.0/lib/*' Validador1`
+
 ### validador 2
+
+**Estratégia**: Copiei o validador 1 e acrescentei a leitura do argumento de linha de comando. Copiei duas ontologias em que estou trabalhando.
 
 <pre><font color="#859900"><b>abio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sobreJena/reasoner</b></font>$ cp -r validador1 validador2
 <font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sobreJena/reasoner</b></font>$ cd validador2
@@ -112,6 +162,32 @@ Validador1.class  Validador1.java  vc-db-1.rdf
 indoorgmlnavi.owl  indoorgml.owl  Validador1.class  Validador1.java
 <font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sobreJena/reasoner/validador2</b></font>$  
 </pre>
+
+
+
+<pre><font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sobreJena/reasoner/validador2</b></font>$ javac -cp &apos;./:/home/fabio/apache-jena-3.17.0/lib/*&apos; Validador2.java 
+<font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sobreJena/reasoner/validador2</b></font>$ java -cp &apos;./:/home/fabio/apache-jena-3.17.0/lib/*&apos; Validador2 indoorgmlnavi.owl
+OK
+<font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sobreJena/reasoner/validador2</b></font>$ java -cp &apos;./:/home/fabio/apache-jena-3.17.0/lib/*&apos; Validador2 indoorgml.owl
+OK
+<font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sobreJena/reasoner/validador2</b></font>$  
+</pre>
+
+Código-fonte: [Validador2.java](Arquivos-Raciocinadores1/validador2/Validador2.java)
+
+Comando para compilação: `javac -cp './:/home/fabio/apache-jena-3.17.0/lib/*' Validador2.java `
+
+Comando para execução: `java -cp './:/home/fabio/apache-jena-3.17.0/lib/*' Validador2 indoorgml.owl`
+
+## Discussão e Conclusão
+
+Atingi o objetivo na quarta, mesmo dia em que iniciei (na verdade comecei ontem...).
+
+Foi mais simples e mais rápido que o previsto, no entanto, resultou superficial pois não traz a interpretação dos exemplos (embora ela esteja na referência de Jena).
+
+Já é útil como ponto de partida para testar o funcionamento de raciocinadores.
+
+## Referências
 
 https://jena.apache.org/documentation/inference/#validation
 https://jena.apache.org/documentation/ontology/index.html
@@ -130,17 +206,4 @@ https://jena.apache.org/documentation/javadoc/jena/org/apache/jena/rdf/model/Inf
 https://jena.apache.org/documentation/javadoc/arq/org/apache/jena/riot/RDFDataMgr.html
 https://www.google.com/search?channel=fs&client=ubuntu&q=java+iterator+import
 https://www.w3schools.com/java/java_iterator.asp
-
-
-<pre><font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sobreJena/reasoner/validador2</b></font>$ javac -cp &apos;./:/home/fabio/apache-jena-3.17.0/lib/*&apos; Validador2.java 
-<font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sobreJena/reasoner/validador2</b></font>$ java -cp &apos;./:/home/fabio/apache-jena-3.17.0/lib/*&apos; Validador2 indoorgmlnavi.owl
-OK
-<font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sobreJena/reasoner/validador2</b></font>$ java -cp &apos;./:/home/fabio/apache-jena-3.17.0/lib/*&apos; Validador2 indoorgml.owl
-OK
-<font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sobreJena/reasoner/validador2</b></font>$  
-</pre>
-
-
-## Discussão e Conclusão
-
 

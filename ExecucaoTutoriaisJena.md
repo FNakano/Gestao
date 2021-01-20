@@ -18,6 +18,8 @@ A fim de não modificar os exemplos recebidos junto com Jena, copiei todos os 11
 
 ### Tutorial 1
 
+[Pasta com código-fonte](Arquivos-ExecucaoTutoriasJena/Tutorial1)
+
 <pre><font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sobreJena/programas/Tutorial1</b></font>$ javac -cp /home/fabio/apache-jena-3.17.0/lib  Tutorial01.java 
 Tutorial01.java:21: error: package org.apache.jena.rdf.model does not exist
 import org.apache.jena.rdf.model.*;
@@ -128,6 +130,8 @@ Da primeira vez que fiz, como o código não escreve nada na tela, fiquei meio e
  
 ### Tutorial 2
 
+[Pasta com código-fonte](Arquivos-ExecucaoTutoriasJena/Tutorial2)
+
 <pre><font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sobreJena/programas/Tutorial2</b></font>$ ls
 Tutorial02.class  Tutorial02.java
 <font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sobreJena/programas/Tutorial2</b></font>$ rm Tutorial02.class
@@ -145,6 +149,8 @@ Tutorial02.class  Tutorial02.java
 
 ### Tutorial 3
 
+[Pasta com código-fonte](Arquivos-ExecucaoTutoriasJena/Tutorial3)
+
 <pre><font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sobreJena/programas/Tutorial3</b></font>$ javac -cp &apos;.:/home/fabio/apache-jena-3.17.0/lib/*&apos; Tutorial03.java
 <font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sobreJena/programas/Tutorial3</b></font>$ java -cp &apos;.:/home/fabio/apache-jena-3.17.0/lib/*&apos; Tutorial03
 http://somewhere/JohnSmith http://www.w3.org/2001/vcard-rdf/3.0#N 5190b8a4-c1b5-4b46-bb7d-a6e9b8ff8dc5 .
@@ -156,6 +162,8 @@ http://somewhere/JohnSmith http://www.w3.org/2001/vcard-rdf/3.0#FN  &quot;John S
 </pre>
 
 ### Tutorial 4
+
+[Pasta com código-fonte](Arquivos-ExecucaoTutoriasJena/Tutorial4)
 
 <pre><font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sobreJena/programas</b></font>$ mkdir Tutorial4
 <font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sobreJena/programas</b></font>$ mv Tutorial04.java Tutorial4
@@ -182,6 +190,8 @@ Tutorial04.java
 </pre>
 
 ### Tutorial 5
+
+[Pasta com código-fonte](Arquivos-ExecucaoTutoriasJena/Tutorial5)
 
 <pre><font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sobreJena/programas</b></font>$ mkdir Tutorial5
 <font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sobreJena/programas</b></font>$ mv Tutorial05.java Tutorial5
@@ -240,6 +250,8 @@ Exception in thread &quot;main&quot; java.lang.IllegalArgumentException: File: v
 
 ### Tutorial 6
 
+[Pasta com código-fonte](Arquivos-ExecucaoTutoriasJena/Tutorial6)
+
 <pre><font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sobreJena/programas</b></font>$ mkdir Tutorial6
 <font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sobreJena/programas</b></font>$ mv Tutorial06.java Tutorial6
 <font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sobreJena/programas</b></font>$ cd Tutorial6
@@ -262,6 +274,7 @@ The nicknames of &quot;John Smith&quot; are:
 
 ### Tutorial 7
 
+[Pasta com código-fonte](Arquivos-ExecucaoTutoriasJena/Tutorial7)
 
 <pre><font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sobreJena/programas</b></font>$ mkdir Tutorial7
 <font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sobreJena/programas</b></font>$ mv Tutorial07.java Tutorial7
@@ -287,6 +300,8 @@ The database contains vcards for:
 
 ### Tutorial 8
 
+[Pasta com código-fonte](Arquivos-ExecucaoTutoriasJena/Tutorial8)
+
 <pre><font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sobreJena/programas</b></font>$ mkdir Tutorial8
 <font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sobreJena/programas</b></font>$ mv Tutorial08.java Tutorial8
 <font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sobreJena/programas</b></font>$ cd Tutorial8
@@ -310,6 +325,8 @@ Arquivo auxiliar: <https://jena.apache.org/tutorials/sparql_data/vc-db-3.rdf>
 Diretório contendo arquivos auxiliares: <https://jena.apache.org/tutorials/sparql_data/>
 
 ### Tutorial 9
+
+[Pasta com código-fonte](Arquivos-ExecucaoTutoriasJena/Tutorial9)
 
 <pre><font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sobreJena/programas</b></font>$ mkdir Tutorial9
 <font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sobreJena/programas</b></font>$ mv Tutorial09.java Tutorial9
@@ -353,6 +370,8 @@ Exception in thread &quot;main&quot; java.lang.IllegalArgumentException: File: v
 <font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sobreJena/programas/Tutorial9</b></font>$  
 
 ### Tutorial 10
+
+[Pasta com código-fonte](Arquivos-ExecucaoTutoriasJena/Tutorial10)
 
 </pre>
 
@@ -416,6 +435,8 @@ The bag contains:
 </pre>
 
 ### Tutorial 11
+
+[Pasta com código-fonte](Arquivos-ExecucaoTutoriasJena/Tutorial11)
 
 <pre><font color="#859900"><b>abio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sobreJena/programas</b></font>$ mkdir Tutorial11
 <font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sobreJena/programas</b></font>$ mv Tutorial11.java Tutorial11
