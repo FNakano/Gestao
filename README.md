@@ -90,4 +90,5 @@ Talvez, prefixar os domínios, como feito em XML e em RDF, diminua a confusão. 
 
 [Os mesmos tutoriais com Fuseki](FusekiTutoriais.md) - inicial
 
+[Explorando Heroku](heroku.md)
 
