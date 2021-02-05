@@ -72,6 +72,8 @@ Talvez, prefixar os domínios, como feito em XML e em RDF, diminua a confusão. 
 
 [Alguns exemplos de uso de Fuseki feitos pelos autores](AlgunsExemplosDeUsoDeFuseki.md): Base para aplicar os tutoriais de Jena usando um servidor Fuseki.
 
+[Carregar SSN e SOSA no Fuseki](CarregarSSNeSOSA.md)
+
 [SPARQL, entailment, HTTP,...](UsandoSPARQL.md) - inicial
 
 [Usando Wikidata](UsandoWikidata.md) - inicial
@@ -91,4 +93,5 @@ Talvez, prefixar os domínios, como feito em XML e em RDF, diminua a confusão. 
 [Os mesmos tutoriais com Fuseki](FusekiTutoriais.md) - inicial
 
 [Explorando Heroku](heroku.md)
+
 
