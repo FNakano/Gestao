@@ -50,4 +50,5 @@ INSERT DATA{
 
 ![Captura da tela consultando na interface com usuário](/Imagens/Captura%20de%20tela%20de%202021-02-05%2013-38-55.png)
 
+**nota**: encontrei a URI completa na aba de edição.
 

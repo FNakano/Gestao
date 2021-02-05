@@ -72,6 +72,8 @@ Talvez, prefixar os domínios, como feito em XML e em RDF, diminua a confusão. 
 
 [Alguns exemplos de uso de Fuseki feitos pelos autores](AlgunsExemplosDeUsoDeFuseki.md): Base para aplicar os tutoriais de Jena usando um servidor Fuseki.
 
+[Onde/Como os dados gerados pelos sensores podem ser armazenados em SSN/SOSA](SSNeSOSA-Dados.md)
+
 [Carregar SSN e SOSA no Fuseki](CarregarSSNeSOSA.md)
 
 [SPARQL, entailment, HTTP,...](UsandoSPARQL.md) - inicial
