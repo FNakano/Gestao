@@ -46,8 +46,8 @@ INSERT DATA{
 
 ```
 
-[Captura da tela com execução do comando](Imagens/Captura%20de%20tela%20de%202021-02-05%2013-38-55.png)
+[Captura da tela com execução do comando](Imagens/Captura%20de%20tela%20de%202021-02-05%2013-24-25.png)
 
-![Captura da tela consultando na interface com usuário](/Imagens/Captura%20de%20tela%20de%202021-02-05%2013-24-25.png)
+![Captura da tela consultando na interface com usuário](/Imagens/Captura%20de%20tela%20de%202021-02-05%2013-38-55.png)
 
 
