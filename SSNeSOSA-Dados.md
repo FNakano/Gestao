@@ -28,7 +28,7 @@ Diagrama 1: Relações de `<DHT22/4578>` no arquivo que descreve sua implantaç�
 
 Diagrama 2: Relações de `<DHT22/4578>` nos arquivos que descrevem implantação e capabilities.
 
-![alt text](Imagens/SSNexemploDoDHT22-doTurtle-comCapabilities.graphml)
+![alt text](Imagens/SSNexemploDoDHT22-doTurtle-comCapabilities.png)
 
 Com a informação até aqui, não fui capaz de entender como os dados são armazenados nem como usar `sosa:Procedure`. Olhando os exemplos:
 
