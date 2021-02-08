@@ -24,11 +24,16 @@ O conteúdo da requisição é uma adaptação do usado em Materiais, ítem 3. A
 
 O app permite digitar a URL e a consulta. Os valores padrão são os que testei. Estão sintaticamente corretos. Na foto, já cliquei no botão POST! e o resultado já está na caixa de texto na parte de baixo da tela.
 
-![alt text](Imagens/Screenshot_20210208-161739.jpg)
+![alt text](Imagens/Screenshot_20210208-194155.jpg)
+
+<!-- ![alt text](Imagens/Screenshot_20210208-161739.jpg) -->
 
 Testei algumas vezes até chegar à consulta sintaticamente correta. No lado do servidor, na foto, no terminal, é possível ver que não houve erros pois a mensagem foi 200-SUCCESS.
 
-![alt text](Imagens/Captura%20de%20tela%20de%202021-02-08%2016-23-38.png)
+![alt text](Imagens/Captura%20de%20tela%20de%202021-02-08%2019-42-28.png)
+
+
+<!-- ![alt text](Imagens/Captura%20de%20tela%20de%202021-02-08%2016-23-38.png) -->
 
 [Arquivo .aia para ser importado no App Inventor e editado por você](Arquivos-AppInventor/Fuseki_Post.aia).
 
