@@ -18,7 +18,7 @@ O conteúdo da requisição é uma adaptação do usado em Materiais, ítem 3. A
 
 1. [Servidor Fuseki sendo executado no computador](https://github.com/santanajods/domotic-swot#rodando-fuseki-server)
 2. [App Inventor](https://github.com/camilabezerril/ImageCV#apresenta%C3%A7%C3%A3o-contexto)
-3. [Consultar servidor Fuseki usando curl](https://github.com/FNakano/Gestao/blob/main/AlgunsExemplosDeUsoDeFuseki.md#fazer-uma-consulta-sparql-select-usando-curl-e-post) 
+3. [Consultar servidor Fuseki usando curl](AlgunsExemplosDeUsoDeFuseki.md#fazer-uma-consulta-sparql-select-usando-curl-e-post) 
 
 ## Resultados
 
@@ -31,6 +31,50 @@ O app permite digitar a URL e a consulta. Os valores padrão são os que testei.
 Testei algumas vezes até chegar à consulta sintaticamente correta. No lado do servidor, na foto, no terminal, é possível ver que não houve erros pois a mensagem foi 200-SUCCESS.
 
 ![alt text](Imagens/Captura%20de%20tela%20de%202021-02-08%2019-42-28.png)
+
+### Conexão com a referência 3.
+
+**nota**: esta é uma melhoria, considerando a necessidade de melhoria da documentação em geral.
+
+A requisição na referência 3 é: `curl -X POST -d "query=select ?s where { ?s ?p ?o . }" localhost:3030/mydataset/query`. Nela, `localhost:3030/mydataset/query` é o endpoint, `"query=select ?s where { ?s ?p ?o . }" é o corpo da requisição POST. Comando e argumentos são `curl -X POST -d`. 
+
+### Diagrama de sequência do exemplo do resultado
+
+**nota**: esta é uma melhoria, considerando a necessidade de melhoria da documentação em geral. Para recuperar os dados, ajudou ter salvo o projeto do App Inventor.
+
+Da consulta padrão (codificada no código-fonte do App, veja o `.aia`), o endpoint é `http://192.168.0.12:3030/MeuSSN/query`
+
+O que no App chamei de consulta, para ser preciso, é o corpo da requisição POST, e é mais fácil de ler se estiver em multilinhas:
+
+```
+query=
+  prefix owl: <http://www.w3.org/2002/07/owl#> 
+  prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+  SELECT DISTINCT ?class ?label ?description WHERE {
+     ?class a owl:Class.
+     OPTIONAL { ?class rdfs:label ?label}
+     OPTIONAL { ?class rdfs:comment ?description} 
+  }
+  LIMIT 25
+```
+
+Um diagrama de sequência compatível com a execução do sistema é:
+
+![alt text](Imagens/sequencia.svg)
+
+Código-fonte do diagrama (se seu navegador tiver algum plugin para renderizar mermaid, talvez você veja a imagem. Neste caso, clique na figura).
+
+``` mermaid
+sequenceDiagram
+  participant Pessoa
+  Note left of Pessoa: Iniciar o servidor Fuseki<br /> segundo a referência 1
+  Pessoa->>App: Preenche caixa Endpoint<br /> com o endpoint que deseja usar
+  Pessoa->>App: Preenche caixa Consulta<br /> com o corpo da requisição POST
+  Pessoa->>App: Clica no botão POST!
+  App->>Fuseki: Requisição
+  Fuseki-->>App: Resposta
+  App-->>Pessoa: Apresenta resposta nos Labels <br />do Arranjo Vertical 2
+```
 
 
 <!-- ![alt text](Imagens/Captura%20de%20tela%20de%202021-02-08%2016-23-38.png) -->
