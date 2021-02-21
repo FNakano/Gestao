@@ -2,6 +2,8 @@
 
 ## 2021-02-21-104556
 
+**nota**: renomeei o arquivo `pom.xml` para `pom.xml.exemplo`. É esperado que esse arquivo seja editado e lido como um exemplo, mas não precise ser usado para especificar um projeto pois a informação para sua construção faz parte deste arquivo.
+
 [O que é Maven, segundo o desenvolvedor, em uma seção.](https://maven.apache.org/guides/getting-started/index.html#what-is-maven).
 
 ### O que tenho a acrescentar
