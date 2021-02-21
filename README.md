@@ -58,6 +58,10 @@ Talvez, prefixar os domínios, como feito em XML e em RDF, diminua a confusão. 
 
 [Conceitos mínimos de XML para avançar para os tópicos XML:RDF, SPARQL, XSLT contidos neste repositório](XMLRapido.md)
 
+[Biblioteca Java para ler XML](LerXMLcomJava/README.md). Caso precise de um XML específico, como XML:RDF, talvez seja melhor buscar uma biblioteca mais específica.
+
+[Maven, teste, leitor de CSV](sobreMaven.md)
+
 [Comentários sobre XML:RDF](XML-RDF.md)
 
 [Avaliar Jena como ferramenta para implementar ferramentas de gestão de informação](AvaliaJena.md)
