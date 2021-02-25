@@ -240,6 +240,156 @@ https://www.w3schools.com/xml/ref_xsl_el_key.asp
 
 ### Teste de Saxon
 
+Experimentei o [Teste 1 na seção 4](#4) usando Saxxon. Copiei os arquivos `cdcatalog.xml` e `cdcatalog.xsl` para uma pasta e executei:
+
+`java -jar ../SaxonHE10-3J/saxon-he-10.3.jar cdcatalog.xml -xsl:cdcatalog.xsl`. Listagem da execução abaixo:
+
+<pre><font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/XSOWL/teste1</b></font>$ ls
+cdcatalog2.xml  cdcatalog.xml  cdcatalog.xsl
+<font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/XSOWL/teste1</b></font>$ head cdcatalog.xml
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;catalog&gt;
+  &lt;cd&gt;
+    &lt;title&gt;Empire Burlesque&lt;/title&gt;
+    &lt;artist&gt;Bob Dylan&lt;/artist&gt;
+    &lt;country&gt;USA&lt;/country&gt;
+    &lt;company&gt;Columbia&lt;/company&gt;
+    &lt;price&gt;10.90&lt;/price&gt;
+    &lt;year&gt;1985&lt;/year&gt;
+  &lt;/cd&gt;
+<font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/XSOWL/teste1</b></font>$ head cdcatalog2.xml
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;?xml-stylesheet type=&quot;text/xsl&quot; href=&quot;cdcatalog.xsl&quot;?&gt;
+&lt;catalog&gt;
+  &lt;cd&gt;
+    &lt;title&gt;Empire Burlesque&lt;/title&gt;
+    &lt;artist&gt;Bob Dylan&lt;/artist&gt;
+    &lt;country&gt;USA&lt;/country&gt;
+    &lt;company&gt;Columbia&lt;/company&gt;
+    &lt;price&gt;10.90&lt;/price&gt;
+    &lt;year&gt;1985&lt;/year&gt;
+<font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/XSOWL/teste1</b></font>$ rm cdcatalog2.xml 
+<font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/XSOWL/teste1</b></font>$ ls
+cdcatalog.xml  cdcatalog.xsl
+<font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/XSOWL/teste1</b></font>$ java -jar ../SaxonHE10-3J/saxon-he-10.3.jar cdcatalog.xml -xsl:cdcatalog.xsl
+&lt;!DOCTYPE HTML&gt;&lt;html&gt;
+   &lt;body&gt;
+      &lt;h2&gt;My CD Collection&lt;/h2&gt;
+      &lt;table border=&quot;1&quot;&gt;
+         &lt;tr bgcolor=&quot;#9acd32&quot;&gt;
+            &lt;th style=&quot;text-align:left&quot;&gt;Title&lt;/th&gt;
+            &lt;th style=&quot;text-align:left&quot;&gt;Artist&lt;/th&gt;
+         &lt;/tr&gt;
+         &lt;tr&gt;
+            &lt;td&gt;Empire Burlesque&lt;/td&gt;
+            &lt;td&gt;Bob Dylan&lt;/td&gt;
+         &lt;/tr&gt;
+         &lt;tr&gt;
+            &lt;td&gt;Hide your heart&lt;/td&gt;
+            &lt;td&gt;Bonnie Tyler&lt;/td&gt;
+         &lt;/tr&gt;
+         &lt;tr&gt;
+            &lt;td&gt;Greatest Hits&lt;/td&gt;
+            &lt;td&gt;Dolly Parton&lt;/td&gt;
+         &lt;/tr&gt;
+         &lt;tr&gt;
+            &lt;td&gt;Still got the blues&lt;/td&gt;
+            &lt;td&gt;Gary Moore&lt;/td&gt;
+         &lt;/tr&gt;
+         &lt;tr&gt;
+            &lt;td&gt;Eros&lt;/td&gt;
+            &lt;td&gt;Eros Ramazzotti&lt;/td&gt;
+         &lt;/tr&gt;
+         &lt;tr&gt;
+            &lt;td&gt;One night only&lt;/td&gt;
+            &lt;td&gt;Bee Gees&lt;/td&gt;
+         &lt;/tr&gt;
+         &lt;tr&gt;
+            &lt;td&gt;Sylvias Mother&lt;/td&gt;
+            &lt;td&gt;Dr.Hook&lt;/td&gt;
+         &lt;/tr&gt;
+         &lt;tr&gt;
+            &lt;td&gt;Maggie May&lt;/td&gt;
+            &lt;td&gt;Rod Stewart&lt;/td&gt;
+         &lt;/tr&gt;
+         &lt;tr&gt;
+            &lt;td&gt;Romanza&lt;/td&gt;
+            &lt;td&gt;Andrea Bocelli&lt;/td&gt;
+         &lt;/tr&gt;
+         &lt;tr&gt;
+            &lt;td&gt;When a man loves a woman&lt;/td&gt;
+            &lt;td&gt;Percy Sledge&lt;/td&gt;
+         &lt;/tr&gt;
+         &lt;tr&gt;
+            &lt;td&gt;Black angel&lt;/td&gt;
+            &lt;td&gt;Savage Rose&lt;/td&gt;
+         &lt;/tr&gt;
+         &lt;tr&gt;
+            &lt;td&gt;1999 Grammy Nominees&lt;/td&gt;
+            &lt;td&gt;Many&lt;/td&gt;
+         &lt;/tr&gt;
+         &lt;tr&gt;
+            &lt;td&gt;For the good times&lt;/td&gt;
+            &lt;td&gt;Kenny Rogers&lt;/td&gt;
+         &lt;/tr&gt;
+         &lt;tr&gt;
+            &lt;td&gt;Big Willie style&lt;/td&gt;
+            &lt;td&gt;Will Smith&lt;/td&gt;
+         &lt;/tr&gt;
+         &lt;tr&gt;
+            &lt;td&gt;Tupelo Honey&lt;/td&gt;
+            &lt;td&gt;Van Morrison&lt;/td&gt;
+         &lt;/tr&gt;
+         &lt;tr&gt;
+            &lt;td&gt;Soulsville&lt;/td&gt;
+            &lt;td&gt;Jorn Hoel&lt;/td&gt;
+         &lt;/tr&gt;
+         &lt;tr&gt;
+            &lt;td&gt;The very best of&lt;/td&gt;
+            &lt;td&gt;Cat Stevens&lt;/td&gt;
+         &lt;/tr&gt;
+         &lt;tr&gt;
+            &lt;td&gt;Stop&lt;/td&gt;
+            &lt;td&gt;Sam Brown&lt;/td&gt;
+         &lt;/tr&gt;
+         &lt;tr&gt;
+            &lt;td&gt;Bridge of Spies&lt;/td&gt;
+            &lt;td&gt;T`Pau&lt;/td&gt;
+         &lt;/tr&gt;
+         &lt;tr&gt;
+            &lt;td&gt;Private Dancer&lt;/td&gt;
+            &lt;td&gt;Tina Turner&lt;/td&gt;
+         &lt;/tr&gt;
+         &lt;tr&gt;
+            &lt;td&gt;Midt om natten&lt;/td&gt;
+            &lt;td&gt;Kim Larsen&lt;/td&gt;
+         &lt;/tr&gt;
+         &lt;tr&gt;
+            &lt;td&gt;Pavarotti Gala Concert&lt;/td&gt;
+            &lt;td&gt;Luciano Pavarotti&lt;/td&gt;
+         &lt;/tr&gt;
+         &lt;tr&gt;
+            &lt;td&gt;The dock of the bay&lt;/td&gt;
+            &lt;td&gt;Otis Redding&lt;/td&gt;
+         &lt;/tr&gt;
+         &lt;tr&gt;
+            &lt;td&gt;Picture book&lt;/td&gt;
+            &lt;td&gt;Simply Red&lt;/td&gt;
+         &lt;/tr&gt;
+         &lt;tr&gt;
+            &lt;td&gt;Red&lt;/td&gt;
+            &lt;td&gt;The Communards&lt;/td&gt;
+         &lt;/tr&gt;
+         &lt;tr&gt;
+            &lt;td&gt;Unchain my heart&lt;/td&gt;
+            &lt;td&gt;Joe Cocker&lt;/td&gt;
+         &lt;/tr&gt;
+      &lt;/table&gt;
+   &lt;/body&gt;
+<font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/XSOWL/teste1</b></font>$ 
+
+</pre> 
+
 Testei Saxon com um gerador de grafos aleatórios (`gnl.xsl`), conforme <http://graphml.graphdrawing.org/download.html>. Acredito que seja um bom exemplo de uso de transformações e da linguagem XSLT (por exemplo, mostra como ler argumentos de linha de comando), mas fiquei frustrado pois a versão gratuita não tem funcionalidade suficiente.
 
 ![alt text](Imagens/Captura%20de%20tela%20de%202021-01-17%2016-20-09.png)
