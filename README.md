@@ -72,6 +72,8 @@ Talvez, prefixar os domínios, como feito em XML e em RDF, diminua a confusão. 
 
 [Ler Turtle para um Modelo em Jena e escrever em XML:RDF](LerTTLEmUmModel/README.md) - Também pode ser uma sugestão para documentação (memória) de desenvolvimento de código.
 
+[Explorar o Modelo lido e criar uma tripla baseado na exploração](ExplorarOTTLLido/README.md).
+
 [O que é Fuseki](https://jena.apache.org/documentation/fuseki2/)
 
 [Como Instalar Fuseki](https://github.com/santanajods/domotic-swot#linux)
