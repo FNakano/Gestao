@@ -179,6 +179,25 @@ Comando para compilação: `javac -cp './:/home/fabio/apache-jena-3.17.0/lib/*' 
 
 Comando para execução: `java -cp './:/home/fabio/apache-jena-3.17.0/lib/*' Validador2 indoorgml.owl`
 
+**nota**
+
+Em 2021-03-22-122419 descobri e corrigi um erro: O código do validador não carregava o arquivo com nome dado na linha de comando. Corrigi, passei os testes `dtttest2.nt` e `dttest3.nt`, como mostrado abaixo. MAS erros que inseri (em outros projetos), não foram detectados. Por exemplo, usar uma propriedade que não existe (por erro de digitação, por exemplo). Vou checar com mais atenção.
+
+<pre>query4.nt                         result9.rdf
+query5.nt                         resultRDFS12.rdf
+query7.nt                         tbox1.rdf
+query8.nt                         timing-data.rdf
+query9.nt                         timing-tbox.rdf
+<font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sobreJena/reasoner/validador2</b></font>$ java -cp &apos;./:/home/fabio/apache-jena-3.17.0/lib/*&apos; Validador2 /home/fabio/Documentos/git/jena/jena-core/testing/reasoners/rdfs/dttest2.nt
+Conflicts
+ - Error (dtRange): Property http://www.hpl.hp.com/semweb/2003/eg#bar has a typed range Datatype[http://www.w3.org/2001/XMLSchema#integer -&gt; class java.math.BigInteger]that is not compatible with &quot;25.5&quot;^^http://www.w3.org/2001/XMLSchema#decimal
+<font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sobreJena/reasoner/validador2</b></font>$ java -cp &apos;./:/home/fabio/apache-jena-3.17.0/lib/*&apos; Validador2 /home/fabio/Documentos/git/jena/jena-core/testing/reasoners/rdfs/dttest3.nt
+OK
+<font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sobreJena/reasoner/validador2</b></font>$  
+
+</pre>
+
+
 ## Discussão e Conclusão
 
 Atingi o objetivo na quarta, mesmo dia em que iniciei (na verdade comecei ontem...).

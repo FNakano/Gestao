@@ -21,7 +21,7 @@ public class Validador2 {
             System.exit(0);
         }
 
-        Model data = RDFDataMgr.loadModel(inputFileName);
+        Model data = RDFDataMgr.loadModel(args[0]);   // havia um bug aqui!
         InfModel infmodel = ModelFactory.createRDFSModel(data);
         ValidityReport validity = infmodel.validate();
         if (validity.isValid()) {
