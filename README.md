@@ -78,6 +78,8 @@ Talvez, prefixar os domínios, como feito em XML e em RDF, diminua a confusão. 
 
 [Explorar o Modelo lido e criar uma tripla baseado na exploração](ExplorarOTTLLido/README.md).
 
+[Escrever, compilar, implantar um servlet em linha de comando, sem IDE instalado](ServletSimples/README.md)
+
 [O que é Fuseki](https://jena.apache.org/documentation/fuseki2/)
 
 [Como Instalar Fuseki](https://github.com/santanajods/domotic-swot#linux)
