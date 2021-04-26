@@ -247,6 +247,78 @@ Isto permite usar javascript no navegador, o que pode ser bastante útil.
 
 A pasta que contém as páginas é `FUSEKI_HOME/webapp`. Modifiquei o `index.html`, acrescentei uma pasta e, dentro dela, dois arquivos. Serviu as páginas conforme esperado.
 
+### Fazer uma consulta SPARQL SELECT da barra de endereçamento do navegador ié HTTP:GET.
+
+Desta vez o servidor Fuseki está hospedado em VPS e foi implantado como um `.war` no Tomcat.
+
+Aqui a requisição passa pelo navegador, pelo servidor http (Apache), pelo servidor jsp (Tomcat), pelo Fuseki, e volta na direção oposta, para a janela do navegador onde a resposta é renderizada.
+
+Neste caminho, a mensagem é transformada - tem caracteres substituídos, para ser compatível com o protocolo de comunicação usado. MAS nem sempre faz tudo que precisa...
+
+Se copiar e colar a linha abaixo na barra de endereço do navegador e der ENTER:
+
+```
+http://ip-50-62-81-50.ip.secureserver.net:8080/fuseki/testeFabio/query?query=select ?s where { ?s ?p ?o}
+```
+
+A resposta é:
+
+<body><h1>HTTP Status 400 – Bad Request</h1><hr class="line" /><p><b>Type</b> Exception Report</p><p><b>Message</b> Invalid character found in the request target [&#47;fuseki&#47;testeFabio&#47;query?query=select%20?s%20where%20{%20?s%20?p%20?o}]. The valid characters are defined in RFC 7230 and RFC 3986</p><p><b>Description</b> The server cannot or will not process the request due to something that is perceived to be a client error (e.g., malformed request syntax, invalid request message framing, or deceptive request routing).</p><p><b>Exception</b></p><pre>java.lang.IllegalArgumentException: Invalid character found in the request target [&#47;fuseki&#47;testeFabio&#47;query?query=select%20?s%20where%20{%20?s%20?p%20?o}]. The valid characters are defined in RFC 7230 and RFC 3986
+	org.apache.coyote.http11.Http11InputBuffer.parseRequestLine(Http11InputBuffer.java:490)
+	org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:261)
+	org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:893)
+	org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1707)
+	org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	java.lang.Thread.run(Thread.java:748)
+</pre><p><b>Note</b> The full stack trace of the root cause is available in the server logs.</p><hr class="line" /><h3>Apache Tomcat/9.0.44</h3>
+
+Levei um tempo até entender a mensagem de erro 
+> The valid characters are defined in RFC 7230 and RFC 3986
+
+e perceber que as chaves também não são caracteres válidos em uma requisição HTTP:GET (Além dos espaços, que são substituídos por %20 automaticamente pelo navegador. A linha para colar na barra de endereço ficou:
+
+```
+http://ip-50-62-81-50.ip.secureserver.net:8080/fuseki/testeFabio/query?query=select%20?s%20where%20%7b%20?s%20?p%20?o%20%7d
+```
+
+![alt text](Captura%20de%20tela%20de%202021-04-26%2014-46-57.png)
 
 
+Referências:
+
+https://stackoverflow.com/questions/54287922/the-valid-characters-are-defined-in-rfc-7230-and-rfc-3986
+
+https://secure.n-able.com/webhelp/nc_9-1-0_so_en/content/sa_docs/api_level_integration/api_integration_urlencoding.html
+
+### Fazer uma consulta SPARQL SELECT com curl e GET
+
+A linha abaixo dá erro 404. (pode ser que a requisição fique com formato diferente: não sei se `-d` coloca os dados na requisição no formato que espero.
+
+```
+curl -X GET -d "query=select ?s where { ?s ?p ?o . }" ip-50-62-81-50.ip.secureserver.net:8080/fuseki/testeFabio/query
+```
+
+A linha abaixo é executada e retorna o resultado da consulta.
+
+```
+curl -X GET ip-50-62-81-50.ip.secureserver.net:8080/fuseki/testeFabio/query?query=select%20?s%20where%7b?s%20?p%20?o%7d
+```
+
+<pre><font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~</b></font>$ curl -X GET -d &quot;query=select ?s where { ?s ?p ?o . }&quot; ip-50-62-81-50.ip.secureserver.net:8080/fuseki/testeFabio/query
+&lt;!doctype html&gt;&lt;html lang=&quot;en&quot;&gt;&lt;head&gt;&lt;title&gt;HTTP Status 404 – Not Found&lt;/title&gt;&lt;style type=&quot;text/css&quot;&gt;body {font-family:Tahoma,Arial,sans-serif;} h1, h2, h3, b {color:white;background-color:#525D76;} h1 {font-size:22px;} h2 {font-size:16px;} h3 {font-size:14px;} p {font-size:12px;} a {color:black;} .line {height:1px;background-color:#525D76;border:none;}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;h1&gt;HTTP Status 404 – Not Found&lt;/h1&gt;&lt;hr class=&quot;line&quot; /&gt;&lt;p&gt;&lt;b&gt;Type&lt;/b&gt; Status Report&lt;/p&gt;&lt;p&gt;&lt;b&gt;Message&lt;/b&gt; Service Description: &amp;#47;fuseki&amp;#47;testeFabio&amp;#47;query&lt;/p&gt;&lt;p&gt;&lt;b&gt;Description&lt;/b&gt; The origin server did not find a current representation for the target resource or is not willing to disclose that one exists.&lt;/p&gt;&lt;hr class=&quot;line&quot; /&gt;&lt;h3&gt;Apache Tomcat/9.0.44&lt;/h3&gt;&lt;/body&gt;&lt;/html&gt;<font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~</b></font>$ curl -X GET -d &quot;query=select ?s where { ?s 
+<font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~</b></font>$ 
+<font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~</b></font>$ 
+<font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~</b></font>$ 
+<font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~</b></font>$ curl -X GET ip-50-62-81-50.ip.secureserver.net:8080/fuseki/testeFabio/query?query=select%20?s%20where%7b?s%20?p%20?o%7d
+{
+  &quot;head&quot;: {
+    &quot;vars&quot;: [ &quot;s&quot; ]
+  } ,
+  &quot;results&quot;: {
+.....
+</pre>
 
