@@ -112,4 +112,5 @@ Talvez, prefixar os domínios, como feito em XML e em RDF, diminua a confusão. 
 
 [Explorando Heroku](heroku.md)
 
+[Automatizando o uso de consultas SPARQL usando shell scripts em Linux](sparql/README.md)
 

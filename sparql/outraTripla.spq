@@ -1,0 +1,8 @@
+update= 
+    PREFIX dc: <http://purl.org/dc/elements/1.1/> 
+    INSERT DATA { 
+        <http://example/book2> dc:title "A new book2" ; 
+                               dc:creator "A.N.Other2" 
+        . 
+    }
+
