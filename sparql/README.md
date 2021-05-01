@@ -284,11 +284,182 @@ Update succeeded
 ...
      </pre>
 
+### qf.sh
+
+Uso: `sh qf.sh <arquivo>`
+
+Função: Executa a consulta especificada no arquivo contra o endpoint QUERY.
+
+Exemplos:
+
+Cria triplas usando `sh up.sh umaTripla.spq` e `sh up.sp outraTripla.spq`, consulta sua criação com `sh qs.sh "<http://example/book1>"` (o formato de retorno é JSON). Em seguida usa as consultas CONSTRUCT e DESCRIBE armazenadas em `constructUmaTripla.spq` e `describeUmaTripla.spq` (o formato de retorno é turtle). Estes dois arquivos são listados abaixo, e o *dump* da execução é apresentado em seguida.
+
+constructUmaTripla.spq
+```
+query= 
+    PREFIX dc: <http://purl.org/dc/elements/1.1/> 
+    CONSTRUCT { <http://example/book1> ?p ?o } 
+        WHERE { <http://example/book1> ?p ?o } 
+```
+
+describeUmaTripla.spq
+```
+query= 
+    PREFIX dc: <http://purl.org/dc/elements/1.1/> 
+    DESCRIBE <http://example/book1>
+```
+
+<pre><font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sparql</b></font>$ source init.sh
+<font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sparql</b></font>$ sh up.sh umaTripla.spq 
+&lt;html&gt;
+&lt;head&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;Success&lt;/h1&gt;
+&lt;p&gt;
+Update succeeded
+&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+<font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sparql</b></font>$ sh up.sh outraTripla.spq 
+&lt;html&gt;
+&lt;head&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;Success&lt;/h1&gt;
+&lt;p&gt;
+Update succeeded
+&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+<font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sparql</b></font>$ cat umaTripla.spq 
+update= 
+    PREFIX dc: &lt;http://purl.org/dc/elements/1.1/&gt; 
+    INSERT DATA { 
+        &lt;http://example/book1&gt; dc:title &quot;A new book&quot; ; 
+                               dc:creator &quot;A.N.Other&quot; 
+        . 
+    }
+
+<font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sparql</b></font>$ sh ls.sh &quot;&lt;http://example/book1&gt;&quot;
+sh: 0: Can&apos;t open ls.sh
+<font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sparql</b></font>$ sh qs.sh &quot;&lt;http://example/book1&gt;&quot;
+{
+  &quot;head&quot;: {
+    &quot;vars&quot;: [ &quot;p&quot; , &quot;o&quot; ]
+  } ,
+  &quot;results&quot;: {
+    &quot;bindings&quot;: [
+      {
+        &quot;p&quot;: { &quot;type&quot;: &quot;uri&quot; , &quot;value&quot;: &quot;http://purl.org/dc/elements/1.1/title&quot; } ,
+        &quot;o&quot;: { &quot;type&quot;: &quot;literal&quot; , &quot;value&quot;: &quot;A new book&quot; }
+      } ,
+      {
+        &quot;p&quot;: { &quot;type&quot;: &quot;uri&quot; , &quot;value&quot;: &quot;http://purl.org/dc/elements/1.1/creator&quot; } ,
+        &quot;o&quot;: { &quot;type&quot;: &quot;literal&quot; , &quot;value&quot;: &quot;A.N.Other&quot; }
+      }
+    ]
+  }
+}
+<font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sparql</b></font>$ sh qs.sh &quot;&lt;http://example/book1&gt;&quot;^C
+<font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sparql</b></font>$ sh qf.sh constructUmaTripla.spq 
+@prefix schema: &lt;http://schema.org/&gt; .
+@prefix :      &lt;http://www.semanticweb.org/joeds/ontologies/2020/3/swotDomoticProject#&gt; .
+@prefix owl:   &lt;http://www.w3.org/2002/07/owl#&gt; .
+@prefix xsd:   &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+@prefix skos:  &lt;http://www.w3.org/2004/02/skos/core#&gt; .
+@prefix voaf:  &lt;http://purl.org/vocommons/voaf#&gt; .
+@prefix rdfs:  &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
+@prefix ssn:   &lt;http://www.w3.org/ns/ssn/&gt; .
+@prefix rdf:   &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+@prefix xml:   &lt;http://www.w3.org/XML/1998/namespace&gt; .
+@prefix dcterms: &lt;http://purl.org/dc/terms/&gt; .
+@prefix time:  &lt;http://www.w3.org/2006/time#&gt; .
+@prefix vann:  &lt;http://purl.org/vocab/vann/&gt; .
+@prefix foaf:  &lt;http://xmlns.com/foaf/0.1/&gt; .
+@prefix dc:    &lt;http://purl.org/dc/elements/1.1/&gt; .
+@prefix sosa:  &lt;http://www.w3.org/ns/sosa/&gt; .
+<font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sparql</b></font>$ sh qf.sh constructUmaTripla.spq 
+@prefix schema: &lt;http://schema.org/&gt; .
+@prefix :      &lt;http://www.semanticweb.org/joeds/ontologies/2020/3/swotDomoticProject#&gt; .
+@prefix owl:   &lt;http://www.w3.org/2002/07/owl#&gt; .
+@prefix xsd:   &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+@prefix skos:  &lt;http://www.w3.org/2004/02/skos/core#&gt; .
+@prefix voaf:  &lt;http://purl.org/vocommons/voaf#&gt; .
+@prefix rdfs:  &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
+@prefix ssn:   &lt;http://www.w3.org/ns/ssn/&gt; .
+@prefix rdf:   &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+@prefix xml:   &lt;http://www.w3.org/XML/1998/namespace&gt; .
+@prefix dcterms: &lt;http://purl.org/dc/terms/&gt; .
+@prefix time:  &lt;http://www.w3.org/2006/time#&gt; .
+@prefix vann:  &lt;http://purl.org/vocab/vann/&gt; .
+@prefix foaf:  &lt;http://xmlns.com/foaf/0.1/&gt; .
+@prefix dc:    &lt;http://purl.org/dc/elements/1.1/&gt; .
+@prefix sosa:  &lt;http://www.w3.org/ns/sosa/&gt; .
+
+&lt;http://example/book1&gt;
+        dc:creator  &quot;A.N.Other&quot; ;
+        dc:title    &quot;A new book&quot; .
+<font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sparql</b></font>$ sh qf.sh describeUmaTripla.spq 
+@prefix schema: &lt;http://schema.org/&gt; .
+@prefix :      &lt;http://www.semanticweb.org/joeds/ontologies/2020/3/swotDomoticProject#&gt; .
+@prefix owl:   &lt;http://www.w3.org/2002/07/owl#&gt; .
+@prefix xsd:   &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+@prefix skos:  &lt;http://www.w3.org/2004/02/skos/core#&gt; .
+@prefix voaf:  &lt;http://purl.org/vocommons/voaf#&gt; .
+@prefix rdfs:  &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
+@prefix ssn:   &lt;http://www.w3.org/ns/ssn/&gt; .
+@prefix rdf:   &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+@prefix xml:   &lt;http://www.w3.org/XML/1998/namespace&gt; .
+@prefix dcterms: &lt;http://purl.org/dc/terms/&gt; .
+@prefix time:  &lt;http://www.w3.org/2006/time#&gt; .
+@prefix vann:  &lt;http://purl.org/vocab/vann/&gt; .
+@prefix foaf:  &lt;http://xmlns.com/foaf/0.1/&gt; .
+@prefix dc:    &lt;http://purl.org/dc/elements/1.1/&gt; .
+@prefix sosa:  &lt;http://www.w3.org/ns/sosa/&gt; .
+
+&lt;http://example/book1&gt;
+        dc:creator  &quot;A.N.Other&quot; ;
+        dc:title    &quot;A new book&quot; .
+<font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sparql</b></font>$ 
+
+</pre>
+
+### Informação sobre o contexto
+
+Em SPARQL há quatro tipos de consultas: SELECT, CONSTRUCT, ASK, DESCRIBE. Documentação [aqui](https://www.w3.org/TR/2008/REC-rdf-sparql-query-20080115/#QueryForms).
+
+O conteúdo e formato de retorno é diferente para cada tipo. Se existe forma de mudar esse formato na configuração do servidor web (ex. configuração do Fuseki), ainda não encontrei. No ajuste padrão da versão de Fuseki que estou usando, SELECT retorna em JSON, CONSTRUCT e DESCRIBE retornam em TURTLE.
+
+### Referências para este script
+
+- https://www.google.com/search?channel=fs&client=ubuntu&q=construct+query+sparql
+- https://www.w3.org/TR/rdf-sparql-query/#construct
+- https://www.google.com/search?q=jena+fuseki+sparql+set+response+type+to+xml&client=ubuntu&channel=fs&sxsrf=ALeKk02g11hROPddhnlrTu9AoSecmZT76Q%3A1619829035686&ei=K6GMYJ-dKaqU5OUP8KqfuAo&oq=jena+fuseki+sparql+set+response+type+to+xml&gs_lcp=Cgdnd3Mtd2l6EAM6BwgAEEcQsAM6BwgjELACECdQ95wDWNT7A2DJ_QNoBnACeACAAa4BiAH1H5IBBDAuMzWYAQCgAQGqAQdnd3Mtd2l6yAEIwAEB&sclient=gws-wiz&ved=0ahUKEwjf3pKynafwAhUqCrkGHXDVB6cQ4dUDCA0&uact=5
+- https://github.com/RDFLib/sparqlwrapper/issues/159
+- https://jena.apache.org/documentation/fuseki2/fuseki-config-endpoint.html
+- https://stackoverflow.com/questions/64646788/sparqlwrapper-cant-make-construct-query-return-other-than-xml
+- https://jena.apache.org/documentation/io/rdfxml_howto.html
+- https://www.w3.org/2009/Talks/0615-qbe/
+- https://docs.oracle.com/database/121/RDFRM/rdf-jena.htm#RDFRM234
+- https://stackoverflow.com/questions/50370001/querying-against-a-wikipedia-rdf-file-turtle-format-with-apache-jena
+- https://jena.apache.org/tutorials/
+- https://jena.apache.org/tutorials/sparql.html
+- https://www.google.com/search?channel=fs&client=ubuntu&q=set+return+format+in+sparql
+- https://sparqlwrapper.readthedocs.io/en/latest/SPARQLWrapper.Wrapper.html
+- https://www.w3.org/TR/2013/REC-rdf-sparql-XMLres-20130321/
+- https://www.w3.org/TR/2008/REC-rdf-sparql-query-20080115/#QueryForms
+- https://www.w3.org/TR/2008/REC-rdf-sparql-query-20080115/#describe
+
 
 ## Próximos passos
 
-- Verificar se alguma consulta SPARQL retorna resposta em RDF:XML, que pode ser armazenada e trabalhada em um *reasoner* Jena. CONSTRUCT pode resolver;
-- Criar uma consulta que carregue ontologias em um dataset. ~~Seja em arquivo remoto (como em SPARQL:LOAD)~~ (FEITO, ver up), seja a partir de um arquivo local.
+- (2021-04-28T15:43:32-03) Verificar se alguma consulta SPARQL retorna resposta em ~~RDF:XML~~ qualquer formato que puder ser lido em um Jena.Model, que pode ser armazenada e trabalhada em um *reasoner* Jena. CONSTRUCT pode resolver; (vou considerar FEITO (2021-04-30T22:11:00-03) )
+   - consegui com CONSTRUCT que a resposta seja em turtle. Ver `qf.sh`;
+   - consegui com DESCRIBE uma consulta mais compacta. Ver `qf.sh`.
+- (2021-04-28T15:43:32-03) Criar uma consulta que carregue ontologias em um dataset. ~~Seja em arquivo remoto (como em SPARQL:LOAD)~~ (FEITO (2021-04-29T09:11:00-03) , ver up), seja a partir de um arquivo local.
+- (2021-04-30T22:11:00-03) Criar o sub-grafo que representa a placa no grafo de conhecimento e incorporá-lo à base de conhecimento armazenada no servidor Fuseki do grupo;
+- (2021-04-30T22:11:00-03) Criar um programa em Java + JENA que faça uma consulta, recupere os sosa:Actuator, os respectivos sosa:Procedure e faça a requisição que corresponde a uma atuação. Estudar as dificuldades e alternativas.
 
 ## Referências
 

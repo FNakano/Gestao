@@ -1,0 +1,5 @@
+query= 
+    PREFIX dc: <http://purl.org/dc/elements/1.1/> 
+    CONSTRUCT { <http://example/book1> ?p ?o } 
+        WHERE { <http://example/book1> ?p ?o } 
+
