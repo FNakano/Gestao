@@ -451,6 +451,42 @@ O conteúdo e formato de retorno é diferente para cada tipo. Se existe forma de
 - https://www.w3.org/TR/2008/REC-rdf-sparql-query-20080115/#QueryForms
 - https://www.w3.org/TR/2008/REC-rdf-sparql-query-20080115/#describe
 
+### qo.sh
+
+Uso: `sh qo.sh <objeto>`
+
+Função: Lista todas as triplas com o objeto dado como argumento.
+
+Exemplo: 
+
+<pre><font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sparql</b></font>$ source init.sh
+<font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sparql</b></font>$ sh qo.sh &quot;&lt;http://www.w3.org/ns/sosa/Actuator&gt;&quot;
+{
+  &quot;head&quot;: {
+    &quot;vars&quot;: [ &quot;s&quot; , &quot;p&quot; ]
+  } ,
+  &quot;results&quot;: {
+    &quot;bindings&quot;: [
+      {
+        &quot;s&quot;: { &quot;type&quot;: &quot;uri&quot; , &quot;value&quot;: &quot;http://localhost/myplace/atuador1&quot; } ,
+        &quot;p&quot;: { &quot;type&quot;: &quot;uri&quot; , &quot;value&quot;: &quot;http://www.w3.org/1999/02/22-rdf-syntax-ns#type&quot; }
+      } ,
+      {
+        &quot;s&quot;: { &quot;type&quot;: &quot;uri&quot; , &quot;value&quot;: &quot;http://localhost/myplace/atuador1&quot; } ,
+        &quot;p&quot;: { &quot;type&quot;: &quot;uri&quot; , &quot;value&quot;: &quot;http://www.w3.org/ns/sosa/implements&quot; }
+      }
+    ]
+  }
+}
+<font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sparql</b></font>$ echo $QUERY
+http://ip-50-62-81-50.ip.secureserver.net:8080/fuseki/testePlaca/query
+<font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sparql</b></font>$ echo $UPDATE
+http://ip-50-62-81-50.ip.secureserver.net:8080/fuseki/testePlaca/update
+<font color="#859900"><b>fabio@fabio-13Z940-G-BK71P1</b></font>:<font color="#268BD2"><b>~/Documentos/ZZfiles/sparql</b></font>$ 
+
+
+</pre>
+
 
 ## Próximos passos
 
