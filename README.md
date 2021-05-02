@@ -114,3 +114,5 @@ Talvez, prefixar os domínios, como feito em XML e em RDF, diminua a confusão. 
 
 [Automatizando o uso de consultas SPARQL usando shell scripts em Linux](sparql/README.md)
 
+[Cria jena.Model a partir de consuta SPARQL](CriaModel/CriaModelAPartirDeConsulta.md)
+
