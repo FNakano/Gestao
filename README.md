@@ -116,3 +116,5 @@ Talvez, prefixar os domínios, como feito em XML e em RDF, diminua a confusão. 
 
 [Cria jena.Model a partir de consuta SPARQL](CriaModel/CriaModelAPartirDeConsulta.md)
 
+[Acesso a um servidor de desenvolvimento local, via Internet, por proxy reverso](/httpPortForward)
+
