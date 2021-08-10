@@ -12,7 +12,7 @@ São diversos os motivos que levam a essa situação, não é objetivo deste tra
 
 Neste trabalho apresenta-se uma solução para desenvolvedores permitirem acesso controlado, através da Internet, a servidores web, geralmente instalados nos computadores dos desenvolvedores, sem IP público. A utilidade da proposta está em permitir que, em ocasiões controladas pelo desenvolvedor, colaboradores, clientes e avaliadores possam acessar os servidores. 
 
-##### Estrutura da solução
+## Estrutura da solução
 
 A solução não é novidade. Ela é baseada em um servidor HTTP funcionando como proxy para os servidores dos desenvolvedores. A conexão entre o proxy e o servidor do desenvolvedor é feita por SSH.**nota**: é necessário um servidor com IP público, que pode ser mantido (custeado) por alguém com vínculo mais duradouro com a instituição. Este servidor pode ser compartilhado com vários desenvovedores, que têm vínculo temporário, e que, ao final da utilização do servidor proxy, podem ter suas credenciais removidas do servidor.
 
@@ -23,7 +23,7 @@ Figura 1: As ligações de dados sem indicação são feitas por wi-fi.
 ![Sistema de produção](httpProxy-Producao.png)
 Fonte: O autor
 
-##### Desenvolvimento
+## Desenvolvimento
 
 O autor tem à disposição uma hospedagem em VPS com IP público que é usada em projetos em etapa crítica de desenvolvimento (leia-se entrega e avaliação de TCC). Para evitar modificações na hospedagem, com chance de "quebra" dos projetos, pensou-se em assinar mais uma hospedagem. Ao invés disso, optou por desenvolver a solução localmente e aguardar a conclusão do TCC. No desenvolvimento local, o Servidor de Acesso e os clientes ficam todos na mesma rede local, como mostrado na figura 2.
 
@@ -31,7 +31,7 @@ Figura 2: As ligações de dados sem indicação são feitas por wi-fi.
 ![Sistema de desenvolvimento](httpProxy-Desenvolvimento.png)
 Fonte: O autor
 
-###### Implantação do sistema de desenvolvimento
+## Implantação do sistema de desenvolvimento
 
 Programas e configurações específicas são feitas somente no Servidor de Acesso e no Servidor de Aplicação. 
 
@@ -49,7 +49,7 @@ A fim de manter um site testável, acrescentou-se um site no Apache, na porta 43
 
 Para o Apache escutar a porta 4321, acrescente `Listen 4321` em `/etc/apache2/ports.conf` (há mais configurações a fazer, então pode deixar para reiniciar o apache depois). [Mais informação aqui](diario.md#virtual-hosts)
 
-Para criar o site na porta 4321 e encaminhar as requisições para a porta 1234 (explicação no servidor de aplicação), acrescentar o fragmento de código abaixo no arquivo `/etc/apache2/sites-available/000-default.conf`. [Mais informação aqui](diario.md#voltando-ao-proxy-reverso)
+Para criar o site na porta 4321 e encaminhar as requisições para a porta 1234 (explicação no servidor de aplicação), acrescentar o fragmento de código abaixo no arquivo `/etc/apache2/sites-available/000-default.conf`. [Mais informação aqui](diario.md##volta-para-proxy-reverso)
 
 ```
  <VirtualHost *:4321>
@@ -87,7 +87,7 @@ Host 192.168.0.13
 - salvar e conectar;
 
 
-###### Resultado
+## Resultado
 
 Caso todos os passos tenham sido executados com sucesso, um navegador, como o do celular, acessará http://192.168.0.13:1234 e exibirá tela similar à apresentada abaixo:
 
@@ -96,11 +96,11 @@ Caso todos os passos tenham sido executados com sucesso, um navegador, como o do
 
 Caso isto não aconteça, convém depurar o processo. Pontos de checagem podem ser definidos pelo conhecimento dos detalhes de cada ferramenta utilizada.
 
-###### Discussão e Conclusão
+## Discussão e Conclusão
 
 Em uma hospedagem VPS específica com 1vCPU, 1GB de RAM e 20GB de armazenamento, o uso de RAM chega ao limite com a execução simultânea de Tomcat e Spring Boot. Com o proxy reverso, esse processamento é retirado do VPS e passado para o servidor de aplicação do desenvolvedor. Provavelmente o uso de RAM será menor quando implantar esta solução.
 
-###### Próximos Passos
+## Próximos Passos
 
 Implantar e testar sistema de produção.
 

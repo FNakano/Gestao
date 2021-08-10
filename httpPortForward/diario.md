@@ -200,7 +200,7 @@ Host 192.168.0.13
 - salvar e conectar;
 
 
-#### Acesso ao servidor fuseki por proxy reverso
+#### Acesso ao servidor fuseki por proxy reverso - Esboço do tutorial
 
 ##### Motivação
 
