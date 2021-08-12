@@ -308,3 +308,22 @@ Implantar e testar sistema de produção.
 2. Instalar Ubuntu;
    - criar usuários;
 3. Seguir o procedimento apresentado neste tutorial.
+
+## <a id="2021-08-12-092326" href="#2021-08-12-092326">2021-08-12-092326</a>
+
+Outros passos em potencial:
+
+- Proxy server no Tomcat (é parecido com o do APACHE, mas não testei)
+   - [instruções](https://tomcat.apache.org/tomcat-8.5-doc/proxy-howto.html)
+- SSH no ESP32 (a biblioteca é acessível pelo gerenciador de bibliotecas da IDE do Arduino, mas tem copyright. Ainda não testei.
+   - Instalei [LibSSH-ESP32](https://www.ewan.cc/?q=node/157)
+   - Documentação no [arduino](https://www.arduino.cc/reference/en/libraries/libssh-esp32/)
+```
+// ESP32 libssh port.
+//
+// Ewan Parker, created 22nd April 2020.
+// Simple port of examples/template.c over WiFi.  Run with a serial monitor at
+// 115200 BAUD.
+//
+// Copyright (C) 2016–2020 Ewan Parker.
+```
