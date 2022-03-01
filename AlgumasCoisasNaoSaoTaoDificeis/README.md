@@ -24,7 +24,7 @@ Há de se observar que definições de termos podem mudar com o tempo. Ainda ass
 
 Passei uns dias lendo artigos, recomendados por colegas, vi, nas referências desses artigos, que existem vocabulários, glossários, dicionários,..., de termos técnicos, mantidos por instituições normativas, como IEEE, W3C,... *(nota: o resultado apresentado aqui não era um dos esperados/desejados)*
 
-Em particular, encontra-se a definição de *interoperability* no *IEEE Standard Glossary of Software Engineering Terminology*. Este glossário tem versões de 1983, 1990, 2010 e 2017. Na versão mais recente:
+Em particular, encontra-se a definição de *interoperability* no *IEEE Standard Glossary of Software Engineering Terminology*. Este glossário tem versões de 1983, 1990, 2010 e 2017. Na versão de 2010:
 
 > 3.1505
 > interoperability
