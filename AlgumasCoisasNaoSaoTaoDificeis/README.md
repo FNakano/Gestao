@@ -24,7 +24,7 @@ Há de se observar que definições de termos podem mudar com o tempo. Ainda ass
 
 Passei uns dias lendo artigos, recomendados por colegas, vi, nas referências desses artigos, que existem vocabulários, glossários, dicionários,..., de termos técnicos, mantidos por instituições normativas, como IEEE, W3C,... *(nota: o resultado apresentado aqui não era um dos esperados/desejados)*
 
-Em particular, encontra-se a definição de *interoperability* no *IEEE Standard Glossary of Software Engineering Terminology*. Este glossário tem versões de 1983, 1990, 2010 e 2017. Na versão de 2010:
+Em particular, encontra-se a definição de *interoperability* no *IEEE Standard Glossary of Software Engineering Terminology*. Este glossário tem versões de 1983, 1990, 2010 e 2017. O hístórico das versões pode ser levantado a partir de: https://standards.ieee.org/ieee/610.12/855/ . Na versão de 2010:
 
 > 3.1505
 > interoperability
@@ -65,6 +65,11 @@ Ainda para o passo 2, existem serviços gratuitos que geram a referência a part
 ## Considerações finais
 
 Espero que esta informação seja útil a quem tiver sido recomendada.
+
+A maneira como W3C e IEEE mantém os documentos e a informação de sua proveniência, para mim, é útil. A organização das versões torna fácil de buscar a origem e a evolução dos termos.
+
+Outra fonte de informação que uso bastante são os Request For Comments (RFC) da Internet Engineering Task Force (IETF). Tem documentação de 50 anos atrás, especificando termos como CSV, MIME, ...
+
    
 **nota**: ... porque alguém fez antes, ou porque alguém mantém algo funcionando,...
 
